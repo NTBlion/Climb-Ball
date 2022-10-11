@@ -1,0 +1,32 @@
+using System.Collections;
+using UnityEngine;
+
+public class MeleeAttackState : EnemyState
+{
+    private Coroutine _coroutine;
+
+    private void OnEnable()
+    {
+        _coroutine = StartCoroutine(Attack());
+    }
+
+    private IEnumerator Attack()
+    {
+        while (Enemy.enabled)
+        {
+            Enemy.Animator.SetTrigger("attack");
+            yield return new WaitForSeconds(Enemy.AttackDelay);
+            Player.ApplyDamage(Enemy.Damage);
+        }
+    }
+
+    private void Update()
+    {
+        Enemy.transform.LookAt(Player.transform.position); //Позже переделать, чтобы плавнее поворачивался
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_coroutine);
+    }
+}
