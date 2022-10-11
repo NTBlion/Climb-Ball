@@ -19,7 +19,7 @@ public abstract class EnemyState : MonoBehaviour
             foreach (var transition in _transitions)
             {
                 transition.enabled = true;
-                transition.Init(Player,Enemy);
+                transition.Init(Player, Enemy);
             }
         }
     }
@@ -42,7 +42,7 @@ public abstract class EnemyState : MonoBehaviour
     {
         foreach (var transition in _transitions)
         {
-            if(transition.NeedTransit)
+            if (transition.NeedTransit)
             {
                 return transition.TargetState;
             }

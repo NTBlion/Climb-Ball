@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Gem : MonoBehaviour
@@ -18,17 +16,25 @@ public class Gem : MonoBehaviour
 
     private float _time = 0;
 
+    private void OnValidate()
+    {
+        if (_delayBeforeMove <= 0.5f)
+            _delayBeforeMove = 0.5f;
+
+        if (_speed <= 0)
+            _speed = 1;
+    }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _player = FindObjectOfType<Player>();
 
         _forceDirection = new Vector3(Random.Range(-1f, 1f), 3, Random.Range(-1f, 1f));
     }
 
     private void OnEnable()
     {
-        _player = FindObjectOfType<Player>();
-
         _rigidbody.AddForce(_forceDirection, ForceMode.Impulse);
         _rigidbody.AddTorque(_torqueDirection, ForceMode.Impulse);
 

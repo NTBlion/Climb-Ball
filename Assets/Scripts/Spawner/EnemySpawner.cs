@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Vector3 randomVector = GenerateRandomSpawnPoint();
             _usedSpawnPoints.Add(randomVector);
-            Instantiate(_enemyTemplate, randomVector, Quaternion.Euler(0,Random.Range(0,360),0), transform);
+            Instantiate(_enemyTemplate, randomVector, Quaternion.Euler(0, Random.Range(0, 360), 0), transform);
         }
     }
 

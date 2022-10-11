@@ -1,3 +1,4 @@
+
 public class IdleState : EnemyState
 {
     private void OnEnable()

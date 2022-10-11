@@ -1597,6 +1597,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3830427168469322739, guid: cfa548ce749aab043a5804b70f71c706, type: 3}
   m_PrefabInstance: {fileID: 2001746507}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2001746509 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7190073649039364489, guid: cfa548ce749aab043a5804b70f71c706, type: 3}
+  m_PrefabInstance: {fileID: 2001746507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2037541820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eeb4b4dbf6e50a4187e4149be44997a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
+  _animator: {fileID: 2001746509}
   _health: 10
   _maxHealth: 10
 --- !u!114 &2037541823

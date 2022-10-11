@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -30,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (var enemy in hitEnemies)
         {
-            if(Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
+            if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
             {
                 enemy.GetComponent<Enemy>().ApplyDamage(_damage);
                 yield return new WaitForSeconds(_attackDelay);

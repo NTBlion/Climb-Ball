@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,10 +13,10 @@ public class Player : MonoBehaviour
         if (_health <= 0)
             _health = 1;
 
-        if(_maxHealth <= 0)
+        if (_maxHealth <= 0)
             _maxHealth = 1;
-        
-        if(_health > _maxHealth)
+
+        if (_health > _maxHealth)
             _health = _maxHealth;
     }
 
