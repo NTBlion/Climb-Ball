@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDelay;
     [SerializeField] private LayerMask _enemyMask;
+    [SerializeField] private Animator _animator;
 
     private float time = 0;
 
@@ -31,14 +32,19 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
             {
-                enemy.GetComponent<Enemy>().ApplyDamage(_damage);
-                yield return new WaitForSeconds(_attackDelay);
+                if(enemy.GetComponent<Collider>().enabled)
+                {
+                    _animator.SetTrigger("attack");
+                    enemy.GetComponent<Enemy>().ApplyDamage(_damage);
+                    yield return new WaitForSeconds(_attackDelay);
+                }
             }
             else
             {
                 StopCoroutine(Attack());
                 yield return (time = 0);
             }
+
         }
     }
 

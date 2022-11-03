@@ -10,6 +10,8 @@ public class DeathState : EnemyState
 
     private IEnumerator Die()
     {
+        Enemy.Agent.enabled = false;
+        Enemy.BoxCollider.enabled = false;
         Enemy.Animator.SetTrigger("die");
         Enemy.DropGem();
         yield return new WaitForSeconds(5);

@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     private NavMeshAgent _agent;
     private Animator _animator;
+    private BoxCollider _boxCollider;
+
     private int _gemsDropCount;
 
     public float Health => _health;
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
     public float AttackDelay => _attackDelay;
     public NavMeshAgent Agent => _agent;
     public Animator Animator => _animator;
+    public BoxCollider BoxCollider => _boxCollider;
 
     private void OnValidate()
     {
@@ -42,6 +45,7 @@ public class Enemy : MonoBehaviour
     {
         _gemsDropCount = Random.Range(_minGemValue, _maxGemValue);
 
+        _boxCollider = GetComponent<BoxCollider>();
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
     }
