@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class MeleeAttackState : EnemyState
 {
-    private Coroutine _coroutine;
+    private Coroutine _attackJob;
 
     private void OnEnable()
     {
-        _coroutine = StartCoroutine(Attack());
+        _attackJob = StartCoroutine(Attack());
     }
 
     private IEnumerator Attack()
@@ -27,6 +27,6 @@ public class MeleeAttackState : EnemyState
 
     private void OnDisable()
     {
-        StopCoroutine(_coroutine);
+        StopCoroutine(_attackJob);
     }
 }

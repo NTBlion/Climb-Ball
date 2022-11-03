@@ -4,9 +4,10 @@ public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] private EnemyState _firstState;
 
-    private EnemyState _currentState;
     public Player Player { get; private set; }
     public Enemy Enemy { get; private set; }
+
+    private EnemyState _currentState;
 
     private void Awake()
     {

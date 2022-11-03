@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 1;
     [SerializeField] private float _damage = 1;
     [SerializeField] private float _attackDelay = 1;
+    [SerializeField] private int _minGemValue = 1;
+    [SerializeField] private int _maxGemValue = 4;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -29,11 +31,16 @@ public class Enemy : MonoBehaviour
 
         if (_attackDelay <= 0)
             _attackDelay = 1;
+
+        if (_minGemValue <= 0)
+        {
+            _minGemValue = 1;
+        }
     }
 
     private void Awake()
     {
-        _gemsDropCount = Random.Range(1, 4);
+        _gemsDropCount = Random.Range(_minGemValue, _maxGemValue);
 
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
