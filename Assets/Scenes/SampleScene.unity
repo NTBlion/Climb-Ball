@@ -1641,6 +1641,7 @@ MonoBehaviour:
   _enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  _animator: {fileID: 2001746509}
 --- !u!114 &2037541822
 MonoBehaviour:
   m_ObjectHideFlags: 0
