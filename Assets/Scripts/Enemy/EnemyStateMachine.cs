@@ -11,7 +11,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Awake()
     {
-        Enemy = FindObjectOfType<Enemy>();
+        Enemy = GetComponent<Enemy>();
 
         Player = FindObjectOfType<Player>();
     }

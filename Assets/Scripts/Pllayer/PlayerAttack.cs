@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _damage;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDelay;
-    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private LayerMask _enemyMask;
 
     private float time = 0;
 
@@ -25,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position + new Vector3(0, 1, 0), _attackRange, _layerMask);
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position + new Vector3(0, 1, 0), _attackRange, _enemyMask);
 
         foreach (var enemy in hitEnemies)
         {

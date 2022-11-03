@@ -6,6 +6,7 @@ public class Gem : MonoBehaviour
 {
     [SerializeField] private float _delayBeforeMove;
     [SerializeField] private float _speed;
+    [SerializeField] private LayerMask _playerMask;
 
     private Rigidbody _rigidbody;
     private Player _player;
@@ -13,6 +14,11 @@ public class Gem : MonoBehaviour
     private Vector3 _forceDirection;
     private Vector3 _torqueDirection = new Vector3(1, 1, 0) * 5f;
     private Vector3 _offsetY = new Vector3(0, 1, 0);
+
+    private float _radius = 10f;
+    private float _minForceDirectionOffset = -1f;
+    private float _maxForceDirectionOffset = 1f;
+    private float _OffsetY = 3;
 
     private float _time = 0;
 
@@ -28,9 +34,15 @@ public class Gem : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _player = FindObjectOfType<Player>();
 
-        _forceDirection = new Vector3(Random.Range(-1f, 1f), 3, Random.Range(-1f, 1f));
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius, _playerMask);
+
+        foreach (var collider in hitColliders)
+        {
+           _player = collider.GetComponent<Player>();
+        }
+
+        _forceDirection = new Vector3(Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset), _OffsetY, Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset));
     }
 
     private void OnEnable()

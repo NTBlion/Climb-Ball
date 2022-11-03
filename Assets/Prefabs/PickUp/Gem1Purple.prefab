@@ -130,3 +130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _delayBeforeMove: 3
   _speed: 10
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 8
