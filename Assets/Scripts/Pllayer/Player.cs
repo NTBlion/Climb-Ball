@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
     [SerializeField] private float _health = 1;
     [SerializeField] private float _maxHealth = 1;
 
@@ -30,6 +29,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        if(gameObject != null)
         Destroy(gameObject);
     }
 }

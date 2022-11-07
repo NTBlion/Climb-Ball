@@ -22,6 +22,7 @@ public class MeleeAttackState : EnemyState
 
     private void Update()
     {
+        if(Player != null)
         Enemy.transform.LookAt(Player.transform.position); //Позже переделать, чтобы плавнее поворачивался
     }
 

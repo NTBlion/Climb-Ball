@@ -6,7 +6,10 @@ public class LostPlayerTransition : EnemyTransition
 
     private void Update()
     {
-        if (Vector3.Distance(Player.transform.position, Enemy.transform.position) > _minLostDistance)
-            NeedTransit = true;
+        if(Player != null)
+        {
+            if (Vector3.Distance(Player.transform.position, Enemy.transform.position) > _minLostDistance)
+                NeedTransit = true;
+        }
     }
 }

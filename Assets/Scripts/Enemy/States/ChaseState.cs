@@ -8,6 +8,7 @@ public class ChaseState : EnemyState
 
     private void Update()
     {
+        if(Player != null)
         Enemy.Agent.SetDestination(Player.transform.position);
     }
 }

@@ -10,42 +10,29 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private Animator _animator;
 
-    private float time = 0;
+    private float _time = 0;
 
     private void Update()
     {
-        time += Time.deltaTime;
+        _time += Time.deltaTime;
 
-        if (time >= _attackDelay)
+        if (_time > _attackDelay)
         {
-            StartCoroutine(Attack());
-            time = 0;
-        }
-
-    }
-
-    private IEnumerator Attack()
-    {
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position + new Vector3(0, 1, 0), _attackRange, _enemyMask);
-
-        foreach (var enemy in hitEnemies)
-        {
-            if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + new Vector3(0, 1, 0), _attackRange, _enemyMask);
+            foreach (var enemy in hitEnemies)
             {
-                if(enemy.GetComponent<Collider>().enabled)
+                if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
                 {
-                    _animator.SetTrigger("attack");
-                    enemy.GetComponent<Enemy>().ApplyDamage(_damage);
-                    yield return new WaitForSeconds(_attackDelay);
+                    if (enemy.GetComponent<Collider>().enabled)
+                    {
+                        _animator.SetTrigger("attack");
+                        enemy.GetComponent<Enemy>().ApplyDamage(_damage);
+                        _time = 0;
+                    }
                 }
             }
-            else
-            {
-                StopCoroutine(Attack());
-                yield return (time = 0);
-            }
-
         }
+
     }
 
     private void OnDrawGizmos()

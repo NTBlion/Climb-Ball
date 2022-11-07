@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
@@ -10,6 +8,7 @@ public class PlayerTracker : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_player != null)
         _camera.transform.position = _player.transform.position + _offset;
     }
 }

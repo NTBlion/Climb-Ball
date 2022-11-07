@@ -6,7 +6,10 @@ public class OutOfMeleeAttackRange : EnemyTransition
 
     private void Update()
     {
-        if (Vector3.Distance(Player.transform.position, Enemy.transform.position) > _minOutOfMeleeAttackRange)
-            NeedTransit = true;
+        if(Player != null)
+        {
+            if (Vector3.Distance(Player.transform.position, Enemy.transform.position) > _minOutOfMeleeAttackRange)
+                NeedTransit = true;
+        }
     }
 }
