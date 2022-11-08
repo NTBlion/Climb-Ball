@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        if(gameObject != null)
         Destroy(gameObject);
     }
 }

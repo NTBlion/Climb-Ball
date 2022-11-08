@@ -8,8 +8,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDelay;
     [SerializeField] private LayerMask _enemyMask;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerAnimator _playerAnimator;
 
+    public Collider[] HitEnemies;
+
+    private Vector3 _offset = new Vector3(0,1,0);
     private float _time = 0;
 
     private void Update()
@@ -18,14 +21,13 @@ public class PlayerAttack : MonoBehaviour
 
         if (_time > _attackDelay)
         {
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + new Vector3(0, 1, 0), _attackRange, _enemyMask);
-            foreach (var enemy in hitEnemies)
+            HitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
+            foreach (var enemy in HitEnemies)
             {
                 if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
                 {
                     if (enemy.GetComponent<Collider>().enabled)
                     {
-                        _animator.SetTrigger("attack");
                         enemy.GetComponent<Enemy>().ApplyDamage(_damage);
                         _time = 0;
                     }
@@ -37,6 +39,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position + new Vector3(0, 1, 0), _attackRange);
+        Gizmos.DrawWireSphere(transform.position + _offset, _attackRange);
     }
 }
