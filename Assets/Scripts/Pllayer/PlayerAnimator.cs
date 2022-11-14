@@ -9,13 +9,13 @@ public class PlayerAnimator : MonoBehaviour
     public const string ATTACK = "attack";
     public const string WALK = "walk";
     public const string RUN = "run";
-    public const string DIE = "Die";
+    public const string DIE = "die";
     public const string TAUNT = "taunt";
     public const string IDLE = "idle";
     public const string JUMP = "jump";
 
-    public void DoAnimation(string AnimationState,bool value)
+    public void DoAnimation(string AnimationName, bool value)
     {
-        _animator.SetBool(AnimationState, value);
+        _animator.SetBool(name, value);
     }
 }
