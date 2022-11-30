@@ -7,38 +7,28 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _damage;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDelay;
-    [SerializeField] private LayerMask _enemyMask;
-    [SerializeField] private PlayerAnimator _playerAnimator;
+    [SerializeField] private EnemyDetection _enemyDetection;
 
-    public Collider[] HitEnemies;
-
-    private Vector3 _offset = new Vector3(0,1,0);
     private float _time = 0;
+
+    private void OnEnable()
+    {
+        _enemyDetection.EnemyDetected += OnEnemyDetect;
+    }
+
+    private void OnDisable()
+    {
+        _enemyDetection.EnemyDetected -= OnEnemyDetect;
+    }
 
     private void Update()
     {
         _time += Time.deltaTime;
-
-        if (_time > _attackDelay)
-        {
-            HitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
-            foreach (var enemy in HitEnemies)
-            {
-                if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
-                {
-                    if (enemy.GetComponent<Collider>().enabled)
-                    {
-                        enemy.GetComponent<Enemy>().ApplyDamage(_damage);
-                        _time = 0;
-                    }
-                }
-            }
-        }
-
     }
 
-    private void OnDrawGizmos()
+    private void OnEnemyDetect(Enemy enemy)
     {
-        Gizmos.DrawWireSphere(transform.position + _offset, _attackRange);
+        Debug.Log("ссс");
+        enemy.ApplyDamage(_damage);
     }
 }
