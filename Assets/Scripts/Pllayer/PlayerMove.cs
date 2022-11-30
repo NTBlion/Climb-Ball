@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
         Move();
         Rotate();
 
-        if (_playerAttack.HitEnemies != null)
+        if (_playerAttack.HitEnemies[0] != null)
         {
             LookAtTarget();
         }
