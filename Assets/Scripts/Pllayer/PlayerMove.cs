@@ -22,11 +22,6 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         Rotate();
-
-        if (_playerAttack.HitEnemies[0] != null)
-        {
-            LookAtTarget();
-        }
     }
 
     private void Move()
@@ -34,6 +29,7 @@ public class PlayerMove : MonoBehaviour
         _moveDirection.x = _joystick.MoveHorizontal();
         _moveDirection.z = _joystick.MoveVertical();
         _characterController.Move(_moveDirection * _moveSpeed * Time.deltaTime);
+        _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.run, true);
     }
 
     private void Rotate()
@@ -44,14 +40,4 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(_lookDirection);
         }
     }
-
-    private void LookAtTarget()
-    {
-        Vector3 tempLookDirection;
-
-        tempLookDirection = transform.position - _playerAttack.HitEnemies[0].transform.position;
-        transform.rotation = Quaternion.LookRotation(-tempLookDirection);
-    }
-
-
 }

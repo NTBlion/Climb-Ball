@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private float _damage;
@@ -10,9 +8,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private PlayerAnimator _playerAnimator;
 
-    public Collider[] HitEnemies;
 
-    private Vector3 _offset = new Vector3(0,1,0);
+    private Vector3 _offset = new Vector3(0, 1, 0);
+    private Collider[] _hitEnemies;
+
     private float _time = 0;
 
     private void Update()
@@ -21,8 +20,8 @@ public class PlayerAttack : MonoBehaviour
 
         if (_time > _attackDelay)
         {
-            HitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
-            foreach (var enemy in HitEnemies)
+            _hitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
+            foreach (var enemy in _hitEnemies)
             {
                 if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
                 {
