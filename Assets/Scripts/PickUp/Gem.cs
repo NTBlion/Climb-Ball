@@ -15,7 +15,7 @@ public class Gem : MonoBehaviour
     private Vector3 _torqueDirection = new Vector3(1, 1, 0) * 5f;
     private Vector3 _offsetY = new Vector3(0, 1, 0);
 
-    private float _radius = 10f;
+    private float _radius = 15f;
     private float _minForceDirectionOffset = -1f;
     private float _maxForceDirectionOffset = 1f;
     private float _OffsetY = 3;
