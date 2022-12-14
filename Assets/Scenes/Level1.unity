@@ -2520,6 +2520,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _playerAnimator: {fileID: 2037541829}
+  _hitEnemies: []
 --- !u!114 &2037541822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2545,8 +2546,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.25
+  m_Height: 1.9
+  m_Radius: 0
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -2560,7 +2561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037541820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.009, y: 0.035, z: -2.795}
+  m_LocalPosition: {x: -0.009, y: 0.005, z: -2.795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2583,8 +2584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystick: {fileID: 37384881}
   _moveSpeed: 3
-  _playerAttack: {fileID: 2037541821}
   _playerAnimator: {fileID: 2037541829}
+  _playerAttack: {fileID: 2037541821}
 --- !u!114 &2037541829
 MonoBehaviour:
   m_ObjectHideFlags: 0
