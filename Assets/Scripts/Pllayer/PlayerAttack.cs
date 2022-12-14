@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -8,9 +9,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private PlayerAnimator _playerAnimator;
 
-
     private Vector3 _offset = new Vector3(0, 1, 0);
-    private Collider[] _hitEnemies;
+    public Collider[] _hitEnemies;
 
     private float _time = 0;
 
@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
         if (_time > _attackDelay)
         {
             _hitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
+
             foreach (var enemy in _hitEnemies)
             {
                 if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)

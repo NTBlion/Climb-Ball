@@ -1,12 +1,15 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private JoyStick _joystick;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private PlayerAttack _playerAttack;
     [SerializeField] private PlayerAnimator _playerAnimator;
+    [SerializeField] private PlayerAttack _playerAttack;
+
+    private bool _hasTarget = false;
 
     private Vector3 _lookDirection;
     private Vector3 _moveDirection;
@@ -21,7 +24,11 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         Move();
-        Rotate();
+        if (_hasTarget == false)
+            Rotate();
+        if(_playerAttack._hitEnemies[0] != null)
+            _hasTarget = true;
+            LookAtTarget();
     }
 
     private void Move()
@@ -39,5 +46,11 @@ public class PlayerMove : MonoBehaviour
             _lookDirection = Vector3.RotateTowards(transform.forward, _moveDirection, _moveSpeed, 0f);
             transform.rotation = Quaternion.LookRotation(_lookDirection);
         }
+    }
+
+    private void LookAtTarget()
+    {
+        _lookDirection = Vector3.RotateTowards(transform.forward, _playerAttack._hitEnemies[0].transform.position - transform.position, _moveSpeed,0f);
+        transform.rotation = Quaternion.LookRotation(_lookDirection);
     }
 }
