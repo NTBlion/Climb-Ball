@@ -5,8 +5,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float _health = 1;
     [SerializeField] private float _maxHealth = 1;
 
-    private CharacterController _characterController;
-
     public float Health => _health;
 
     private void OnValidate()
@@ -19,12 +17,6 @@ public class Player : MonoBehaviour
 
         if (_health > _maxHealth)
             _health = _maxHealth;
-    }
-
-    private void Awake()
-    {
-        _characterController = gameObject.GetComponent<CharacterController>();
-        _characterController.detectCollisions = false;
     }
 
     public void ApplyDamage(float damage)
