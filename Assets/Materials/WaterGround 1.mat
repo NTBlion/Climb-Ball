@@ -86,12 +86,12 @@ Material:
     - _UVSec: 0
     - _WaterDeep: 0.01
     - _WaterDepth: 0
-    - _WaterHeight: 0.02
+    - _WaterHeight: -0.02
     - _WaterMinAlpha: 0
     - _ZWrite: 1
     m_Colors:
     - _BorderColor: {r: 0.67737633, g: 0.8113207, b: 0.78699446, a: 0.33333334}
-    - _Color: {r: 0.37126198, g: 0.9716981, b: 0.9716981, a: 1}
+    - _Color: {r: 0.6666667, g: 0.64705884, b: 0.60784316, a: 1}
     - _DistTiling: {r: 5.41, g: 1.52, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MoveDirection: {r: 0.3, g: 0.5, b: 0, a: 0}
