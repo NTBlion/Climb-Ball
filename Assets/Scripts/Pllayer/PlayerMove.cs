@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private JoyStick _joystick;
@@ -9,8 +10,15 @@ public class PlayerMove : MonoBehaviour
 
     public bool _hasTarget = false;
 
+    private CharacterController _characterController;
+
     private Vector3 _lookDirection;
     private Vector3 _moveDirection;
+
+    private void Awake()
+    {
+        _characterController = GetComponent<CharacterController>();
+    }
 
     private void Update()
     {
@@ -25,7 +33,7 @@ public class PlayerMove : MonoBehaviour
     {
         _moveDirection.x = _joystick.MoveHorizontal();
         _moveDirection.z = _joystick.MoveVertical();
-        transform.Translate(_moveDirection * _moveSpeed * Time.deltaTime, Space.World);
+        _characterController.Move(_moveDirection * _moveSpeed * Time.deltaTime);
         _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.run, true);
     }
 
