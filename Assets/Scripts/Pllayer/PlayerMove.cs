@@ -34,7 +34,9 @@ public class PlayerMove : MonoBehaviour
         _moveDirection.x = _joystick.MoveHorizontal();
         _moveDirection.z = _joystick.MoveVertical();
         _characterController.Move(_moveDirection * _moveSpeed * Time.deltaTime);
-        _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.run, true);
+        float tempMoveDirectionX = Mathf.Abs(_moveDirection.x);
+        float tempMoveDirectionZ = Mathf.Abs(_moveDirection.z);
+        _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.movement, tempMoveDirectionX + tempMoveDirectionZ);
     }
 
     private void Rotate()

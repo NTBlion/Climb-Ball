@@ -12,11 +12,17 @@ public class PlayerAnimator : MonoBehaviour
         die,
         taunt,
         idle,
-        jump
+        jump,
+        movement
     }
 
     public void DoAnimation(AnimationStates state, bool value)
     {
         _animator.SetBool(state.ToString(), value);
+    }
+
+    public void DoAnimation(AnimationStates state, float value)
+    {
+        _animator.SetFloat(state.ToString(), value);
     }
 }
