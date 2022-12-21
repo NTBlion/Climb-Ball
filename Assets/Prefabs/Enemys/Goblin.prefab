@@ -821,6 +821,7 @@ GameObject:
   - component: {fileID: 6723522189540892045}
   - component: {fileID: 9143695724038228982}
   - component: {fileID: 8852358361328521768}
+  - component: {fileID: 1315739522360196259}
   - component: {fileID: 4267952180377900184}
   - component: {fileID: -6952664615633008317}
   - component: {fileID: -338779491055952712}
@@ -828,6 +829,7 @@ GameObject:
   - component: {fileID: 9209360046070748241}
   - component: {fileID: 852519416638724697}
   - component: {fileID: 587472867271736355}
+  - component: {fileID: -9197389479234332793}
   m_Layer: 6
   m_Name: Goblin
   m_TagString: Untagged
@@ -869,96 +871,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: '
-
-    Transform ''Bip001 L Toe0'' has been deleted
-
-    Transform
-    ''Bip001 L Foot'' has been deleted
-
-    Transform ''Bip001 L Calf'' has been
-    deleted
-
-    Transform ''Bip001 L Thigh'' has been deleted
-
-    Transform ''Bip001
-    R Toe0'' has been deleted
-
-    Transform ''Bip001 R Foot'' has been deleted
-
-    Transform
-    ''Bip001 R Calf'' has been deleted
-
-    Transform ''Bip001 R Thigh'' has been
-    deleted
-
-    Transform ''Bip001 L Finger02'' has been deleted
-
-    Transform
-    ''Bip001 L Finger01'' has been deleted
-
-    Transform ''Bip001 L Finger0'' has
-    been deleted
-
-    Transform ''Bip001 L Finger12'' has been deleted
-
-    Transform
-    ''Bip001 L Finger11'' has been deleted
-
-    Transform ''Bip001 L Finger1'' has
-    been deleted
-
-    Transform ''Bip001 L Hand'' has been deleted
-
-    Transform
-    ''Bip001 L Forearm'' has been deleted
-
-    Transform ''Bip001 L UpperArm'' has
-    been deleted
-
-    Transform ''Bip001 L Clavicle'' has been deleted
-
-    Transform
-    ''Bip001 Head'' has been deleted
-
-    Transform ''Bip001 Neck'' has been deleted
-
-    Transform
-    ''Bip001 R Finger02'' has been deleted
-
-    Transform ''Bip001 R Finger01'' has
-    been deleted
-
-    Transform ''Bip001 R Finger0'' has been deleted
-
-    Transform
-    ''Bip001 R Finger12'' has been deleted
-
-    Transform ''Bip001 R Finger11'' has
-    been deleted
-
-    Transform ''Bip001 R Finger1'' has been deleted
-
-    Transform
-    ''Bip001 R Hand'' has been deleted
-
-    Transform ''Bip001 R Forearm'' has been
-    deleted
-
-    Transform ''Bip001 R UpperArm'' has been deleted
-
-    Transform
-    ''Bip001 R Clavicle'' has been deleted
-
-    Transform ''Bip001 Spine1'' has been
-    deleted
-
-    Transform ''Bip001 Spine'' has been deleted
-
-    Transform ''Bip001
-    Pelvis'' has been deleted
-
-    Transform ''Bip001'' has been deleted'
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1015,6 +928,7 @@ MonoBehaviour:
   _attackDelay: 1
   _minGemValue: 1
   _maxGemValue: 4
+  _weapon: {fileID: 0}
 --- !u!114 &7332828194434442261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,6 +974,7 @@ MonoBehaviour:
   - {fileID: -6047217459313168709}
   - {fileID: 852519416638724697}
   - {fileID: 587472867271736355}
+  - {fileID: -9197389479234332793}
 --- !u!114 &6723522189540892045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,6 +1006,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 9209360046070748241}
   - {fileID: 587472867271736355}
+  - {fileID: -9197389479234332793}
 --- !u!114 &8852358361328521768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,6 +1017,19 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f13173fbe26c154086bd3f7d9a32e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+--- !u!114 &1315739522360196259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428504861946745138}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9a9b649ce6e834aae1e2f1d465f8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
@@ -1200,6 +1129,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 8852358361328521768}
+--- !u!114 &-9197389479234332793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428504861946745138}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada82e00c96bbf8428bea2bb3bedb306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: 1315739522360196259}
 --- !u!1 &3428504861946745140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3428504861947104534}
   - component: {fileID: 3428504861960412258}
+  - component: {fileID: 2695623481245464968}
   m_Layer: 0
   m_Name: deb_Goblin01_W
   m_TagString: Untagged
@@ -1402,6 +1345,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000014901161, y: 0.0000018849969, z: 0.30613878}
     m_Extent: {x: 0.089675784, y: 0.089675784, z: 0.47134152}
   m_DirtyAABB: 0
+--- !u!114 &2695623481245464968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428504861946745142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195bd0711c68632468ace2b316f8db94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3428504861946745144
 GameObject:
   m_ObjectHideFlags: 0

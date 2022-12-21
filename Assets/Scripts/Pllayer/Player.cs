@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _health = 1;
     [SerializeField] private float _maxHealth = 1;
 
-    public float Health => _health;
+    public event UnityAction<float> HealthChanged;
 
     private void OnValidate()
     {
@@ -19,9 +20,16 @@ public class Player : MonoBehaviour
             _health = _maxHealth;
     }
 
+    private void Awake()
+    {
+        _health = _maxHealth;
+    }
+
     public void ApplyDamage(float damage)
     {
         _health -= damage;
+        float healthAsPercantage = _health / _maxHealth;
+        HealthChanged?.Invoke(healthAsPercantage);
 
         if (_health <= 0)
             Die();

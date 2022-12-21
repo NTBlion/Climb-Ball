@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _attackDelay = 1;
     [SerializeField] private int _minGemValue = 1;
     [SerializeField] private int _maxGemValue = 4;
-
+    
+    private EnemyWeapon _weapon;
     private NavMeshAgent _agent;
     private Animator _animator;
     private BoxCollider _boxCollider;
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent Agent => _agent;
     public Animator Animator => _animator;
     public BoxCollider BoxCollider => _boxCollider;
+    public EnemyWeapon Weapon => _weapon;
 
     private void OnValidate()
     {
@@ -48,6 +50,7 @@ public class Enemy : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider>();
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _weapon = GetComponentInChildren<EnemyWeapon>();
     }
 
     public void ApplyDamage(float damage)

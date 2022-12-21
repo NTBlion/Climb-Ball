@@ -16,14 +16,15 @@ public class MeleeAttackState : EnemyState
         {
             Enemy.Animator.SetTrigger("attack");
             yield return new WaitForSeconds(Enemy.AttackDelay);
-            Player.ApplyDamage(Enemy.Damage);
+            if (Player != null)
+                Player.ApplyDamage(Enemy.Damage);
         }
     }
 
     private void Update()
     {
-        if(Player != null)
-        Enemy.transform.LookAt(Player.transform); //Позже переделать, чтобы плавнее поворачивался
+        if (Player != null)
+            Enemy.transform.LookAt(Player.transform); //Позже переделать, чтобы плавнее поворачивался
     }
 
     private void OnDisable()
