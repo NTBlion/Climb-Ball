@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Animator), typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator), typeof(NavMeshAgent), typeof(BoxCollider))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Gem _gemTemplate;

@@ -25,4 +25,9 @@ public class PlayerAnimator : MonoBehaviour
     {
         _animator.SetFloat(state.ToString(), value);
     }
+
+    public void DoAnimation(AnimationStates state)
+    {
+        _animator.SetTrigger(state.ToString());
+    }
 }

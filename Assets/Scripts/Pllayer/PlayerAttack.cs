@@ -18,10 +18,11 @@ public class PlayerAttack : MonoBehaviour
     {
         _time += Time.deltaTime;
 
+
+        _hitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
+
         if (_time > _attackDelay)
         {
-            _hitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
-
             foreach (var enemy in _hitEnemies)
             {
                 if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
@@ -34,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+
 
     }
 

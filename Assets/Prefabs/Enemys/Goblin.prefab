@@ -928,7 +928,6 @@ MonoBehaviour:
   _attackDelay: 1
   _minGemValue: 1
   _maxGemValue: 4
-  _weapon: {fileID: 0}
 --- !u!114 &7332828194434442261
 MonoBehaviour:
   m_ObjectHideFlags: 0
