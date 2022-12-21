@@ -18,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
     {
         _time += Time.deltaTime;
 
-
         _hitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
 
         if (_time > _attackDelay)

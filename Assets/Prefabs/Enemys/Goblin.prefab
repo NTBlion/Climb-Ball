@@ -1267,7 +1267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3428504861947104534}
   - component: {fileID: 3428504861960412258}
-  - component: {fileID: 2695623481245464968}
+  - component: {fileID: 3538670479127627084}
   m_Layer: 0
   m_Name: deb_Goblin01_W
   m_TagString: Untagged
@@ -1344,7 +1344,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000014901161, y: 0.0000018849969, z: 0.30613878}
     m_Extent: {x: 0.089675784, y: 0.089675784, z: 0.47134152}
   m_DirtyAABB: 0
---- !u!114 &2695623481245464968
+--- !u!114 &3538670479127627084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

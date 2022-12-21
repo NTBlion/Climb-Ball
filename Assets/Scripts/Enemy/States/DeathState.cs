@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
-using DG.Tweening;
 
 public class DeathState : EnemyState
 {
+    private Vector2 _moveDirection;
+    private float _delayBeforeDestroy = 5f;
+
     private void OnEnable()
     {
         StartCoroutine(Die());
+        _moveDirection = new Vector2(0, -0.15f);
     }
 
     private IEnumerator Die()
@@ -16,15 +19,15 @@ public class DeathState : EnemyState
         Enemy.Animator.SetTrigger("die");
         Enemy.DropGem();
         StartCoroutine(Dissolve());
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(_delayBeforeDestroy);
         Destroy(Enemy.gameObject);
     }
 
     private IEnumerator Dissolve()
     {
-        for (float i = 0; i < 5; i+=Time.deltaTime)
+        for (float i = 0; i < _delayBeforeDestroy; i += Time.deltaTime)
         {
-            Enemy.transform.Translate(new Vector2(0,1f * Time.deltaTime));
+            Enemy.transform.Translate(_moveDirection * Time.deltaTime);
             yield return null;
         }
     }

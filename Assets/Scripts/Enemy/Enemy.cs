@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _attackDelay = 1;
     [SerializeField] private int _minGemValue = 1;
     [SerializeField] private int _maxGemValue = 4;
-    
+
     private EnemyWeapon _weapon;
     private NavMeshAgent _agent;
     private Animator _animator;

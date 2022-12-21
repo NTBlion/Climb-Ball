@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     public event UnityAction<float> HealthChanged;
 
+    public event UnityAction PlayerDied;
+
     private void OnValidate()
     {
         if (_health <= 0)
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
     public void ApplyDamage(float damage)
     {
         _health -= damage;
+
         float healthAsPercantage = _health / _maxHealth;
         HealthChanged?.Invoke(healthAsPercantage);
 
@@ -35,8 +38,17 @@ public class Player : MonoBehaviour
             Die();
     }
 
+    public void Heal(float value)
+    {
+        _health += value;
+
+        if (_health > _maxHealth)
+            _health = _maxHealth;
+    }
+
     private void Die()
     {
+        PlayerDied?.Invoke();
         Destroy(gameObject);
     }
 }

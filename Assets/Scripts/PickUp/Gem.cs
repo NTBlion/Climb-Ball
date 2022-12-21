@@ -47,10 +47,17 @@ public class Gem : MonoBehaviour
 
     private void OnEnable()
     {
+        _player.PlayerDied += OnPlayerDied;
+
         _rigidbody.AddForce(_forceDirection, ForceMode.Impulse);
         _rigidbody.AddTorque(_torqueDirection, ForceMode.Impulse);
 
         StartCoroutine(PushUp());
+    }
+
+    private void OnDestroy()
+    {
+        _player.PlayerDied -= OnPlayerDied;
     }
 
     private void Update()
@@ -82,5 +89,11 @@ public class Gem : MonoBehaviour
         _rigidbody.AddForce(_offsetY * 4, ForceMode.Impulse);
         transform.localEulerAngles = Vector3.zero;
         _rigidbody.AddTorque(_offsetY * _rigidbody.maxAngularVelocity, ForceMode.Impulse);
+    }
+
+    private void OnPlayerDied()
+    {
+        StopCoroutine(PushUp());
+        Destroy(gameObject);
     }
 }
