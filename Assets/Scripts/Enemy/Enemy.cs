@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
     private BoxCollider _boxCollider;
 
+    private Vector3 _offsetY = new Vector3(0, 1, 0);
+
     private int _gemsDropCount;
 
     public float Health => _health;
@@ -62,7 +64,7 @@ public class Enemy : MonoBehaviour
     {
         for (int i = 0; i < _gemsDropCount; i++)
         {
-            Instantiate(_gemTemplate, transform.position, Quaternion.identity);
+            Instantiate(_gemTemplate, transform.position + _offsetY, Quaternion.identity);
         }
     }
 }

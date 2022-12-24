@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 411942775}
   - component: {fileID: 2566653234819819679}
   m_Layer: 7
-  m_Name: Gem1Purple
+  m_Name: Gem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989901591261424}
   serializedVersion: 2
-  m_Mass: 0.5
+  m_Mass: 5
   m_Drag: 0.05
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -111,7 +111,7 @@ MeshCollider:
   m_GameObject: {fileID: 1989901591261424}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad285244809e3a948a2f778575b8888d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayBeforeMove: 3
+  _delayBeforeMoveToPlayer: 3
   _speed: 10
   _playerMask:
     serializedVersion: 2

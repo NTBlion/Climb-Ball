@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private JoyStick _joystick;
+    [SerializeField] private Joystick _joystick;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private PlayerAnimator _playerAnimator;
     [SerializeField] private PlayerAttack _playerAttack;

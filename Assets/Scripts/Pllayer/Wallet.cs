@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Wallet : MonoBehaviour
 {
     [SerializeField] private Gem _gem;
 
     private float _gemsCount;
-        
+
     public float GemsCount => _gemsCount;
 
     private void OnDisable()

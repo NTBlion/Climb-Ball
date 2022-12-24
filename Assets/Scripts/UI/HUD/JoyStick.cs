@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private Image _stick;
     [SerializeField] private Image _joystickBackground;

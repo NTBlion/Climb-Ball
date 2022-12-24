@@ -5,7 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class Gem : MonoBehaviour
 {
-    [SerializeField] private float _delayBeforeMove;
+    [SerializeField] private float _delayBeforeMoveToPlayer;
     [SerializeField] private float _speed;
     [SerializeField] private LayerMask _playerMask;
 
@@ -16,20 +16,21 @@ public class Gem : MonoBehaviour
     private Vector3 _torqueDirection = new Vector3(1, 1, 0) * 5f;
     private Vector3 _offsetY = new Vector3(0, 1, 0);
 
+    private float _delayBeforePushUp;
     private float _radius = 15f;
-    private float _minForceDirectionOffset = -1f;
-    private float _maxForceDirectionOffset = 1f;
+    private float _minForceDirectionOffset = -5f;
+    private float _maxForceDirectionOffset = 5f;
     private float _time = 0;
     private float _groundHeight = 0.369f;
 
-    private bool _pushUpActive = true;
+    private bool _forceActive = true;
 
     public event UnityAction GemCollected;
 
     private void OnValidate()
     {
-        if (_delayBeforeMove <= 0.5f)
-            _delayBeforeMove = 0.5f;
+        if (_delayBeforeMoveToPlayer <= 0.5f)
+            _delayBeforeMoveToPlayer = 0.5f;
 
         if (_speed <= 0)
             _speed = 1;
@@ -46,6 +47,7 @@ public class Gem : MonoBehaviour
             _player = collider.GetComponent<Player>();
         }
 
+        _delayBeforePushUp = _delayBeforeMoveToPlayer - 0.5f;
         _forceDirection = GetForceDirection();
     }
 
@@ -58,30 +60,30 @@ public class Gem : MonoBehaviour
         StartCoroutine(PushUp());
     }
 
-    private void OnDestroy()
-    {
-        GemCollected?.Invoke();
-        _player.PlayerDied -= OnPlayerDied;
-    }
-
     private void Update()
     {
         _time += Time.deltaTime;
 
-        if (_time >= _delayBeforeMove && _player != null)
+        if (_time >= _delayBeforeMoveToPlayer && _player != null)
         {
             MoveToPlayer();
         }
 
-        if(transform.position.y < _groundHeight)
+        if (transform.position.y < _groundHeight)
         {
-            _pushUpActive = false;
+            _forceActive = false;
         }
 
-        if (_pushUpActive == false)
+        if (_forceActive == false)
         {
             transform.position = new Vector3(transform.position.x, _groundHeight, transform.position.z);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GemCollected?.Invoke();
+        _player.PlayerDied -= OnPlayerDied;
     }
 
     private void MoveToPlayer()
@@ -93,18 +95,18 @@ public class Gem : MonoBehaviour
             _time = 0;
             Destroy(gameObject);
         }
-        if(transform.position.y < 1.272f)
+        if (transform.position.y < GetLowerHeightInFlight())
         {
-            transform.position = new Vector3(transform.position.x,1.272f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, GetLowerHeightInFlight(), transform.position.z);
         }
     }
 
     private IEnumerator PushUp()
     {
-        Vector3 offsetY = new Vector3(0,12,0);
+        Vector3 offsetY = new Vector3(0, 120, 0);
 
-        yield return new WaitForSeconds(_delayBeforeMove - 0.5f);
-        _pushUpActive = true;
+        yield return new WaitForSeconds(_delayBeforePushUp);
+        _forceActive = true;
         _rigidbody.AddForce(offsetY, ForceMode.Impulse);
         transform.localEulerAngles = Vector3.zero;
         _rigidbody.AddTorque(_offsetY * _rigidbody.maxAngularVelocity, ForceMode.Impulse);
@@ -118,6 +120,12 @@ public class Gem : MonoBehaviour
 
     private Vector3 GetForceDirection()
     {
-        return new Vector3(Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset), 3, Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset));
+        return new Vector3(Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset), 30, Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset));
+    }
+
+    private float GetLowerHeightInFlight()
+    {
+        Vector3 temp = _player.transform.position + _offsetY;
+        return temp.y;
     }
 }
