@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
 
         if (_health > _maxHealth)
             _health = _maxHealth;
+
+        float healthAsPercantage = _health / _maxHealth;
+        HealthChanged?.Invoke(healthAsPercantage);
     }
 
     private void Die()

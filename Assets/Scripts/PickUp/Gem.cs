@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Gem : MonoBehaviour
@@ -18,9 +19,12 @@ public class Gem : MonoBehaviour
     private float _radius = 15f;
     private float _minForceDirectionOffset = -1f;
     private float _maxForceDirectionOffset = 1f;
-    private float _OffsetY = 3;
-
     private float _time = 0;
+    private float _groundHeight = 0.369f;
+
+    private bool _pushUpActive = true;
+
+    public event UnityAction GemCollected;
 
     private void OnValidate()
     {
@@ -39,16 +43,15 @@ public class Gem : MonoBehaviour
 
         foreach (var collider in hitColliders)
         {
-           _player = collider.GetComponent<Player>();
+            _player = collider.GetComponent<Player>();
         }
 
-        _forceDirection = new Vector3(Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset), _OffsetY, Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset));
+        _forceDirection = GetForceDirection();
     }
 
     private void OnEnable()
     {
         _player.PlayerDied += OnPlayerDied;
-
         _rigidbody.AddForce(_forceDirection, ForceMode.Impulse);
         _rigidbody.AddTorque(_torqueDirection, ForceMode.Impulse);
 
@@ -57,6 +60,7 @@ public class Gem : MonoBehaviour
 
     private void OnDestroy()
     {
+        GemCollected?.Invoke();
         _player.PlayerDied -= OnPlayerDied;
     }
 
@@ -64,12 +68,20 @@ public class Gem : MonoBehaviour
     {
         _time += Time.deltaTime;
 
-        if (_time >= _delayBeforeMove)
+        if (_time >= _delayBeforeMove && _player != null)
         {
-            if (_player != null)
-                MoveToPlayer();
+            MoveToPlayer();
         }
 
+        if(transform.position.y < _groundHeight)
+        {
+            _pushUpActive = false;
+        }
+
+        if (_pushUpActive == false)
+        {
+            transform.position = new Vector3(transform.position.x, _groundHeight, transform.position.z);
+        }
     }
 
     private void MoveToPlayer()
@@ -81,12 +93,19 @@ public class Gem : MonoBehaviour
             _time = 0;
             Destroy(gameObject);
         }
+        if(transform.position.y < 1.272f)
+        {
+            transform.position = new Vector3(transform.position.x,1.272f, transform.position.z);
+        }
     }
 
     private IEnumerator PushUp()
     {
+        Vector3 offsetY = new Vector3(0,12,0);
+
         yield return new WaitForSeconds(_delayBeforeMove - 0.5f);
-        _rigidbody.AddForce(_offsetY * 4, ForceMode.Impulse);
+        _pushUpActive = true;
+        _rigidbody.AddForce(offsetY, ForceMode.Impulse);
         transform.localEulerAngles = Vector3.zero;
         _rigidbody.AddTorque(_offsetY * _rigidbody.maxAngularVelocity, ForceMode.Impulse);
     }
@@ -95,5 +114,10 @@ public class Gem : MonoBehaviour
     {
         StopCoroutine(PushUp());
         Destroy(gameObject);
+    }
+
+    private Vector3 GetForceDirection()
+    {
+        return new Vector3(Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset), 3, Random.Range(_minForceDirectionOffset, _maxForceDirectionOffset));
     }
 }
