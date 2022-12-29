@@ -7,6 +7,8 @@ public class Wallet : MonoBehaviour
 
     private float _gemsCount;
 
+    public event UnityAction<float> GemAdded;
+
     public float GemsCount => _gemsCount;
 
     private void OnDisable()
@@ -17,6 +19,7 @@ public class Wallet : MonoBehaviour
     private void OnGemCollected()
     {
         _gemsCount++;
+        GemAdded?.Invoke(_gemsCount);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,6 +27,7 @@ public class Wallet : MonoBehaviour
         if (other.TryGetComponent(out Gem gem))
         {
             gem.GemCollected += OnGemCollected;
+            Destroy(gem.gameObject);
         }
     }
 }
