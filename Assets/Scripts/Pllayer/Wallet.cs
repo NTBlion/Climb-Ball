@@ -7,7 +7,7 @@ public class Wallet : MonoBehaviour
 
     private float _gemsCount;
 
-    public event UnityAction<float> GemAdded;
+    public event UnityAction<float> GemsCountChanged;
 
     public float GemsCount => _gemsCount;
 
@@ -16,10 +16,16 @@ public class Wallet : MonoBehaviour
         _gem.GemCollected -= OnGemCollected;
     }
 
+    public void BuyUpgrade()
+    {
+
+        GemsCountChanged?.Invoke(_gemsCount);
+    }
+
     private void OnGemCollected()
     {
         _gemsCount++;
-        GemAdded?.Invoke(_gemsCount);
+        GemsCountChanged?.Invoke(_gemsCount);
     }
 
     private void OnTriggerEnter(Collider other)

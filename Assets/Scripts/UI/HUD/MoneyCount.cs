@@ -8,12 +8,12 @@ public class MoneyCount : MonoBehaviour
 
     private void OnEnable()
     {
-        _wallet.GemAdded += OnGemAdded;
+        _wallet.GemsCountChanged += OnGemAdded;
     }
 
     private void OnDisable()
     {
-        _wallet.GemAdded -= OnGemAdded;
+        _wallet.GemsCountChanged -= OnGemAdded;
     }
 
     private void OnGemAdded(float gemCount)
