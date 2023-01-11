@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.23
+    agentRadius: 1.43
     agentHeight: 2
-    agentSlope: 45
+    agentSlope: 60
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.07666667
+    cellSize: 0.47666666
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: c284f99b7e8598b4bbbaffb061969687, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &37384879
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 54022904}
   - component: {fileID: 54022903}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Before/after_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,12 +926,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61105d915c2e0a47b505d63426d9697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthUpgradePrice: 10
-  _playerMoveUpgradePrice: 10
-  _playerDamageUpgradePrice: 10
+  _healthUpgradePrice: 1
+  _DamageUpgradePrice: 3
+  _MoveUpgradePrice: 5
   _player: {fileID: 2037541822}
-  _playerMove: {fileID: 2037541828}
   _playerAttack: {fileID: 2037541821}
+  _playerMove: {fileID: 2037541828}
   _wallet: {fileID: 2037541832}
 --- !u!1 &242483885
 GameObject:
@@ -1818,7 +1818,7 @@ GameObject:
   - component: {fileID: 374500611}
   - component: {fileID: 374500610}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2050,7 +2050,7 @@ GameObject:
   - component: {fileID: 425109395}
   - component: {fileID: 425109394}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2702,7 +2702,7 @@ GameObject:
   - component: {fileID: 573665638}
   - component: {fileID: 573665637}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3140,7 +3140,7 @@ GameObject:
   - component: {fileID: 726162876}
   - component: {fileID: 726162875}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3347,7 +3347,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762797215}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 164640530}
+        m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &762797215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3705,7 +3717,7 @@ GameObject:
   - component: {fileID: 872515207}
   - component: {fileID: 872515206}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3840,7 +3852,7 @@ GameObject:
   - component: {fileID: 876119831}
   - component: {fileID: 876119830}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4050,7 +4062,6 @@ GameObject:
   - component: {fileID: 928859111}
   - component: {fileID: 928859114}
   - component: {fileID: 928859113}
-  - component: {fileID: 928859112}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -4073,20 +4084,6 @@ Transform:
   m_Father: {fileID: 1320948526}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &928859112
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928859110}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &928859113
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4502,7 +4499,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 966815207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 164640530}
+        m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &966815207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4553,7 +4562,7 @@ GameObject:
   - component: {fileID: 998323651}
   - component: {fileID: 998323650}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Before/after_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4688,7 +4697,7 @@ GameObject:
   - component: {fileID: 1013516697}
   - component: {fileID: 1013516696}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6045,7 +6054,7 @@ GameObject:
   - component: {fileID: 1488462396}
   - component: {fileID: 1488462395}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6168,103 +6177,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488462393}
   m_CullTransparentMesh: 1
---- !u!1 &1510514718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1510514722}
-  - component: {fileID: 1510514721}
-  - component: {fileID: 1510514720}
-  - component: {fileID: 1510514719}
-  m_Layer: 0
-  m_Name: NavMesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &1510514719
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510514718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1510514720
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510514718}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 09d581f0e1a1cb241939141cc6d97a16, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1510514721
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510514718}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1510514722
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510514718}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.55, y: -0.20387316, z: 20.43096}
-  m_LocalScale: {x: 24.377851, y: 1, z: 32.99788}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1566937283
 GameObject:
   m_ObjectHideFlags: 0
@@ -6479,7 +6391,7 @@ Transform:
   - {fileID: 374404878}
   - {fileID: 1953546949}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1751235047
 GameObject:
@@ -7004,7 +6916,7 @@ GameObject:
   - component: {fileID: 1889175986}
   - component: {fileID: 1889175985}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Before/after_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7386,7 +7298,7 @@ GameObject:
   - component: {fileID: 2011811520}
   - component: {fileID: 2011811519}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7518,13 +7430,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2037541827}
+  - component: {fileID: 2037541833}
   - component: {fileID: 2037541831}
   - component: {fileID: 2037541822}
   - component: {fileID: 2037541821}
   - component: {fileID: 2037541828}
   - component: {fileID: 2037541829}
   - component: {fileID: 2037541832}
-  - component: {fileID: 2037541833}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -7545,6 +7457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _additionalDamage: 0
   _attackRange: 1.42
   _attackDelay: 2
   _enemyMask:
@@ -7575,7 +7488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037541820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.009, y: 0.272, z: -4.79}
+  m_LocalPosition: {x: -0.009, y: 0.172, z: -4.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7596,9 +7509,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _joystick: {fileID: 37384881}
-  _moveSpeed: 3
   _playerAnimator: {fileID: 2037541829}
   _playerAttack: {fileID: 2037541821}
+  _moveSpeed: 3
+  _additionalMoveSpeed: 0.2
   _hasTarget: 0
 --- !u!114 &2037541829
 MonoBehaviour:
@@ -8737,8 +8651,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076261810042817}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: -0.15, z: 2.9203}
-  m_LocalScale: {x: 1.8325001, y: 1, z: 1.9354838}
+  m_LocalPosition: {x: -0.15781498, y: -0.15000007, z: 4.0356126}
+  m_LocalScale: {x: 1.5419111, y: 1, z: 2.051226}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2072719574}

@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IUpgradable
     {
         _health -= damage;
 
-        CalculateHealthAsercentage();
+        CalculateHealthAsPercentage();
 
         if (_health <= 0)
             Die();
@@ -44,16 +44,16 @@ public class Player : MonoBehaviour, IUpgradable
         if (_health > _maxHealth)
             _health = _maxHealth;
 
-        CalculateHealthAsercentage();
+        CalculateHealthAsPercentage();
     }
 
     public void Upgrade()
     {
         _maxHealth += _additionalHealth;
-        CalculateHealthAsercentage();
+        CalculateHealthAsPercentage();
     }
 
-    private void CalculateHealthAsercentage()
+    private void CalculateHealthAsPercentage()
     {
         float healthAsPercantage = _health / _maxHealth;
         HealthChanged?.Invoke(healthAsPercantage);

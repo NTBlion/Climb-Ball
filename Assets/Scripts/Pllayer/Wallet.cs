@@ -23,12 +23,12 @@ public class Wallet : MonoBehaviour
             _gemsCount -= upgradePrice;
             GemsCountChanged?.Invoke(_gemsCount);
             isUpgraded = true;
+
             return isUpgraded;
         }
         else
         {
             isUpgraded = false;
-            Debug.Log("Денег нет, но вы держитесь");
             return isUpgraded;
         }
     }
