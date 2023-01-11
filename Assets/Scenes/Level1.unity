@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.1
+    agentRadius: 0.23
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.033333335
+    cellSize: 0.07666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -833,6 +833,7 @@ GameObject:
   - component: {fileID: 164640528}
   - component: {fileID: 164640527}
   - component: {fileID: 164640529}
+  - component: {fileID: 164640530}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -913,6 +914,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58fdcc225736ce459a8810237d68623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &164640530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164640525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61105d915c2e0a47b505d63426d9697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthUpgradePrice: 10
+  _playerMoveUpgradePrice: 10
+  _playerDamageUpgradePrice: 10
+  _player: {fileID: 2037541822}
+  _playerMove: {fileID: 2037541828}
+  _playerAttack: {fileID: 2037541821}
+  _wallet: {fileID: 2037541832}
 --- !u!1 &242483885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1181,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 284499216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 164640530}
+        m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &284499216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7532,8 +7564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eeb4b4dbf6e50a4187e4149be44997a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 55
-  _maxHealth: 55
+  _health: 10
+  _maxHealth: 10
+  _additionalHealth: 2
 --- !u!4 &2037541827
 Transform:
   m_ObjectHideFlags: 0

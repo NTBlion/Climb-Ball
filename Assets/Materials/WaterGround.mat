@@ -39,8 +39,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _DistTex:
         m_Texture: {fileID: 2800000, guid: f6acd684980920849a180e1c541fb199, type: 3}
-        m_Scale: {x: 2, y: 2}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 6.09, y: 2}
+        m_Offset: {x: -1.63, y: -1.63}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -82,7 +82,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TextureVisibility: 0.804
+    - _TextureVisibility: 0.084
     - _UVSec: 0
     - _WaterDeep: 0.01
     - _WaterDepth: 0
@@ -92,9 +92,9 @@ Material:
     m_Colors:
     - _BorderColor: {r: 0.67737633, g: 0.8113207, b: 0.78699446, a: 0.33333334}
     - _Color: {r: 0.36320752, g: 1, b: 0.858808, a: 1}
-    - _DistTiling: {r: 5.41, g: 1.52, b: 0, a: 0}
+    - _DistTiling: {r: 2.55, g: -2.23, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MoveDirection: {r: 0.3, g: 0.5, b: 0, a: 0}
-    - _Tiling: {r: 0.15, g: 3, b: 0, a: 0}
+    - _MoveDirection: {r: 0, g: 0, b: 0.2, a: 0}
+    - _Tiling: {r: 0, g: -0.07, b: 0, a: 0}
     - _WaterColor: {r: 0.30196077, g: 0.75294125, b: 0.6901961, a: 1}
   m_BuildTextureStacks: []

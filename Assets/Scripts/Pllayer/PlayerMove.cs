@@ -1,12 +1,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : MonoBehaviour, IUpgradable
 {
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private float _moveSpeed;
     [SerializeField] private PlayerAnimator _playerAnimator;
     [SerializeField] private PlayerAttack _playerAttack;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _additionalMoveSpeed;
 
     public bool _hasTarget = false;
 
@@ -27,6 +28,10 @@ public class PlayerMove : MonoBehaviour
             Rotate();
         if (_hasTarget == true)
         LookAtTarget();
+    }
+    public void Upgrade()
+    {
+        _moveSpeed += _additionalMoveSpeed;
     }
 
     private void Move()
@@ -52,4 +57,5 @@ public class PlayerMove : MonoBehaviour
     {
         transform.LookAt(_playerAttack._hitEnemies[0].transform);
     }
+
 }

@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, IUpgradable
 {
     [SerializeField] private float _damage;
+    [SerializeField] private float _additionalDamage;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDelay;
     [SerializeField] private LayerMask _enemyMask;
@@ -37,9 +38,14 @@ public class PlayerAttack : MonoBehaviour
 
 
     }
+    public void Upgrade()
+    {
+        _damage += _additionalDamage;
+    }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position + _offset, _attackRange);
     }
+
 }

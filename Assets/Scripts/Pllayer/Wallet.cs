@@ -9,17 +9,28 @@ public class Wallet : MonoBehaviour
 
     public event UnityAction<float> GemsCountChanged;
 
-    public float GemsCount => _gemsCount;
-
     private void OnDisable()
     {
         _gem.GemCollected -= OnGemCollected;
     }
 
-    public void BuyUpgrade()
+    public bool BuyUpgrade(float upgradePrice)
     {
+        bool isUpgraded = false;
 
-        GemsCountChanged?.Invoke(_gemsCount);
+        if (upgradePrice <= _gemsCount)
+        {
+            _gemsCount -= upgradePrice;
+            GemsCountChanged?.Invoke(_gemsCount);
+            isUpgraded = true;
+            return isUpgraded;
+        }
+        else
+        {
+            isUpgraded = false;
+            Debug.Log("Денег нет, но вы держитесь");
+            return isUpgraded;
+        }
     }
 
     private void OnGemCollected()

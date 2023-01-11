@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IUpgradable
 {
     [SerializeField] private float _health = 1;
     [SerializeField] private float _maxHealth = 1;
+    [SerializeField] private float _additionalHealth;
 
     public event UnityAction<float> HealthChanged;
-
     public event UnityAction PlayerDied;
 
     private void OnValidate()
@@ -31,8 +31,7 @@ public class Player : MonoBehaviour
     {
         _health -= damage;
 
-        float healthAsPercantage = _health / _maxHealth;
-        HealthChanged?.Invoke(healthAsPercantage);
+        CalculateHealthAsercentage();
 
         if (_health <= 0)
             Die();
@@ -45,10 +44,20 @@ public class Player : MonoBehaviour
         if (_health > _maxHealth)
             _health = _maxHealth;
 
+        CalculateHealthAsercentage();
+    }
+
+    public void Upgrade()
+    {
+        _maxHealth += _additionalHealth;
+        CalculateHealthAsercentage();
+    }
+
+    private void CalculateHealthAsercentage()
+    {
         float healthAsPercantage = _health / _maxHealth;
         HealthChanged?.Invoke(healthAsPercantage);
     }
-
     private void Die()
     {
         PlayerDied?.Invoke();
