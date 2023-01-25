@@ -7631,7 +7631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _additionalDamage: 2
-  _attackRange: 1.42
+  _attackRange: 3
   _attackDelay: 2
   _enemyMask:
     serializedVersion: 2
