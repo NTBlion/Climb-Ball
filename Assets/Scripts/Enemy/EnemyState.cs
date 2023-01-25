@@ -24,7 +24,6 @@ public abstract class EnemyState : MonoBehaviour
         }
     }
 
-
     public void Exit()
     {
         if (enabled == true)

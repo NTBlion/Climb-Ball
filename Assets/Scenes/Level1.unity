@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 1.43
+    agentRadius: 0.07
     agentHeight: 2
     agentSlope: 60
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.47666666
+    cellSize: 0.023333333
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: ffdcc173ca2e2e74e875317211e5c481, type: 2}
 --- !u!1 &37384879
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +833,6 @@ GameObject:
   - component: {fileID: 164640528}
   - component: {fileID: 164640527}
   - component: {fileID: 164640529}
-  - component: {fileID: 164640530}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -914,25 +913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58fdcc225736ce459a8810237d68623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &164640530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164640525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b61105d915c2e0a47b505d63426d9697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthUpgradePrice: 1
-  _DamageUpgradePrice: 3
-  _MoveUpgradePrice: 5
-  _player: {fileID: 2037541822}
-  _playerAttack: {fileID: 2037541821}
-  _playerMove: {fileID: 2037541828}
-  _wallet: {fileID: 2037541832}
 --- !u!1 &242483885
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +924,7 @@ GameObject:
   - component: {fileID: 242483886}
   - component: {fileID: 242483888}
   - component: {fileID: 242483887}
+  - component: {fileID: 242483889}
   m_Layer: 5
   m_Name: MoveSpeed
   m_TagString: Untagged
@@ -1014,6 +995,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242483885}
   m_CullTransparentMesh: 1
+--- !u!114 &242483889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242483885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1725eec183f23d24f93ee709fb8989fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradeSystem: {fileID: 243710739}
+  _price: {fileID: 1488462395}
+--- !u!1 &243710738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243710740}
+  - component: {fileID: 243710739}
+  m_Layer: 0
+  m_Name: UpgradeSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &243710739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243710738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61105d915c2e0a47b505d63426d9697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthUpgradePrice: 1
+  _damageUpgradePrice: 2
+  _moveUpgradePrice: 5
+  _player: {fileID: 2037541822}
+  _playerAttack: {fileID: 2037541821}
+  _playerMove: {fileID: 2037541828}
+  _wallet: {fileID: 2037541832}
+--- !u!4 &243710740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243710738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.184, y: 8.426, z: -5.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244367095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1228,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164640530}
+      - m_Target: {fileID: 243710739}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -2919,6 +2965,7 @@ GameObject:
   - component: {fileID: 591179444}
   - component: {fileID: 591179446}
   - component: {fileID: 591179445}
+  - component: {fileID: 591179447}
   m_Layer: 5
   m_Name: Damage
   m_TagString: Untagged
@@ -2989,6 +3036,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591179443}
   m_CullTransparentMesh: 1
+--- !u!114 &591179447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591179443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8684daec82bd9c4ba67400838d4e805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradeSystem: {fileID: 243710739}
+  _price: {fileID: 1013516696}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,7 +3409,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164640530}
+      - m_Target: {fileID: 243710739}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -4500,7 +4561,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164640530}
+      - m_Target: {fileID: 243710739}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -5294,6 +5355,103 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137862303}
   m_Mesh: {fileID: 4300000, guid: 305f277e1529222439b495a441de2f0b, type: 3}
+--- !u!1 &1146106242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1146106246}
+  - component: {fileID: 1146106245}
+  - component: {fileID: 1146106244}
+  - component: {fileID: 1146106243}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!65 &1146106243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146106242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1146106244
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146106242}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1146106245
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146106242}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1146106246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146106242}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5587119, y: -0.2100001, z: 20.603851}
+  m_LocalScale: {x: 25.02237, y: 1, z: 33.05611}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1159359555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6391,7 +6549,7 @@ Transform:
   - {fileID: 374404878}
   - {fileID: 1953546949}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1751235047
 GameObject:
@@ -6834,6 +6992,7 @@ GameObject:
   - component: {fileID: 1869773531}
   - component: {fileID: 1869773534}
   - component: {fileID: 1869773533}
+  - component: {fileID: 1869773535}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -6904,6 +7063,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869773530}
   m_CullTransparentMesh: 1
+--- !u!114 &1869773535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869773530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410d0bcf75d91ce498fae00d4610d79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradeSystem: {fileID: 243710739}
+  _price: {fileID: 726162875}
 --- !u!1 &1889175983
 GameObject:
   m_ObjectHideFlags: 0
@@ -7457,7 +7630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _additionalDamage: 0
+  _additionalDamage: 2
   _attackRange: 1.42
   _attackDelay: 2
   _enemyMask:
@@ -7477,8 +7650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eeb4b4dbf6e50a4187e4149be44997a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
-  _maxHealth: 10
+  _health: 5
+  _maxHealth: 5
   _additionalHealth: 2
 --- !u!4 &2037541827
 Transform:

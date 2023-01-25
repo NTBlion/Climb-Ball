@@ -15,29 +15,32 @@ public class PlayerAttack : MonoBehaviour, IUpgradable
 
     private float _time = 0;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _time += Time.deltaTime;
-
         _hitEnemies = Physics.OverlapSphere(transform.position + _offset, _attackRange, _enemyMask);
 
         if (_time > _attackDelay)
         {
             foreach (var enemy in _hitEnemies)
             {
-                if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
+                if (Vector3.Distance(enemy.transform.position, transform.position) <= 1.42f)
                 {
                     if (enemy.GetComponent<Collider>().enabled)
                     {
+                        _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.attack);
                         enemy.GetComponent<Enemy>().ApplyDamage(_damage);
                         _time = 0;
                     }
                 }
             }
         }
-
-
     }
+
+    private void Update()
+    {
+        _time += Time.deltaTime;
+    }
+
     public void Upgrade()
     {
         _damage += _additionalDamage;

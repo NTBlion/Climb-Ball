@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour, IUpgradable
 
     private Vector3 _lookDirection;
     private Vector3 _moveDirection;
+    private Quaternion _targetRotation;
 
     private void Awake()
     {
@@ -24,10 +25,12 @@ public class PlayerMove : MonoBehaviour, IUpgradable
     private void Update()
     {
         Move();
-        if (_hasTarget == false)
+        if (_playerAttack._hitEnemies.Length > 0)
+            LookAtTarget();
+        else
             Rotate();
-        if (_hasTarget == true)
-        LookAtTarget();
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, _targetRotation, 15f * Time.deltaTime);
     }
     public void Upgrade()
     {
@@ -49,13 +52,13 @@ public class PlayerMove : MonoBehaviour, IUpgradable
         if (Vector3.Angle(Vector3.forward, _moveDirection) > 1f)
         {
             _lookDirection = Vector3.RotateTowards(transform.forward, _moveDirection, _moveSpeed, 0f);
-            transform.rotation = Quaternion.LookRotation(_lookDirection);
+            _targetRotation = Quaternion.LookRotation(_lookDirection);
         }
     }
 
     private void LookAtTarget()
     {
-        transform.LookAt(_playerAttack._hitEnemies[0].transform);
+        var targetRotation = Quaternion.LookRotation(_playerAttack._hitEnemies[0].transform.position - transform.position);
+        _targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
     }
-
 }
