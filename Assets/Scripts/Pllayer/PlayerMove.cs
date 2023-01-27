@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -8,6 +9,7 @@ public class PlayerMove : MonoBehaviour, IUpgradable
     [SerializeField] private PlayerAttack _playerAttack;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _additionalMoveSpeed;
+    [SerializeField] private float _gravity;
 
     private bool _hasTarget = false;
 
@@ -22,15 +24,25 @@ public class PlayerMove : MonoBehaviour, IUpgradable
         _characterController = GetComponent<CharacterController>();
     }
 
+    private void OnEnable()
+    {
+        _playerAttack.Attacked += OnPlayerAttack;
+    }
+
+    private void OnDisable()
+    {
+        _playerAttack.Attacked -= OnPlayerAttack;
+    }
+
     private void Update()
     {
+        transform.rotation = Quaternion.Lerp(transform.rotation, _targetRotation, 20f * Time.deltaTime);
+        _characterController.Move(new Vector3(0, _gravity * -Time.deltaTime, 0));
+
         Move();
-        if (_playerAttack._hitEnemies.Length > 0)
-            LookAtTarget();
-        else
+        if (_hasTarget == false)
             Rotate();
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, _targetRotation, 15f * Time.deltaTime);
     }
     public void Upgrade()
     {
@@ -51,14 +63,22 @@ public class PlayerMove : MonoBehaviour, IUpgradable
     {
         if (Vector3.Angle(Vector3.forward, _moveDirection) > 1f)
         {
-            _lookDirection = Vector3.RotateTowards(transform.forward, _moveDirection, _moveSpeed, 0f);
+            _lookDirection = Vector3.RotateTowards(transform.forward, _moveDirection, _moveSpeed, 1.42f);
             _targetRotation = Quaternion.LookRotation(_lookDirection);
         }
     }
 
-    private void LookAtTarget()
+    private void OnPlayerAttack(Enemy attackedEnemy)
     {
-        var targetRotation = Quaternion.LookRotation(_playerAttack._hitEnemies[0].transform.position - transform.position);
+        StartCoroutine(SetTarget(attackedEnemy));
+    }
+
+    private IEnumerator SetTarget(Enemy attackedEnemy)
+    {
+        _hasTarget = true;
+        var targetRotation = Quaternion.LookRotation(attackedEnemy.transform.position - transform.position);
         _targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
+        yield return new WaitForSeconds(_playerAttack.AttackDelay);
+        _hasTarget = false;
     }
 }

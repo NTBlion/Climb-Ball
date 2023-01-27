@@ -8,7 +8,7 @@ public class MaterialChanger : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer _meshRenderer;
     [SerializeField] private Material _hitMaterial;
 
-    private float _delay = 0.3f;
+    private float _delay = 0.7f;
 
     private Enemy _enemy;
     private Material _startMaterial;

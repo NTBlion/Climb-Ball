@@ -16,6 +16,7 @@ public class MeleeAttackState : EnemyState
         {
             Enemy.Animator.SetTrigger("attack");
             yield return new WaitForSeconds(Enemy.AttackDelay);
+
             if (Player != null && Player.Health >= 0)
                 Player.ApplyDamage(Enemy.Damage);
             else
@@ -26,7 +27,7 @@ public class MeleeAttackState : EnemyState
     private void Update()
     {
         if (Player != null)
-            Enemy.transform.LookAt(Player.transform); //Позже переделать, чтобы плавнее поворачивался
+            Enemy.transform.LookAt(Player.transform.position); //Позже переделать, чтобы плавнее поворачивался
     }
 
     private void OnDisable()
