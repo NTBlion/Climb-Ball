@@ -814,6 +814,7 @@ GameObject:
   - component: {fileID: 3428504861956137632}
   - component: {fileID: -2015633810935050189}
   - component: {fileID: 1154109300610082376}
+  - component: {fileID: 975718645289006439}
   - component: {fileID: 8306196807111828831}
   - component: {fileID: 7332828194434442261}
   - component: {fileID: -3034489461337707944}
@@ -905,11 +906,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428504861946745138}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.44, y: 1, z: 0.4}
   m_Center: {x: 0, y: 0.56, z: 0}
+--- !u!114 &975718645289006439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428504861946745138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7f905b8d41b6a4291eddc1cb0b6fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 3428504861960412256}
+  _hitMaterial: {fileID: 2100000, guid: 332f239b77363db4f816891c721f6599, type: 2}
 --- !u!114 &8306196807111828831
 MonoBehaviour:
   m_ObjectHideFlags: 0

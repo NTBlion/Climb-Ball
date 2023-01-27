@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,9 @@ public class Player : MonoBehaviour, IUpgradable
     [SerializeField] private float _health = 1;
     [SerializeField] private float _maxHealth = 1;
     [SerializeField] private float _additionalHealth;
+    [SerializeField] private PlayerAnimator _playerAnimator;
+
+    public float Health => _health;
 
     public event UnityAction<float> HealthChanged;
     public event UnityAction PlayerDied;
@@ -34,7 +38,9 @@ public class Player : MonoBehaviour, IUpgradable
         CalculateHealthAsPercentage();
 
         if (_health <= 0)
-            Die();
+        {
+            StartCoroutine(Die());
+        }
     }
 
     public void Heal(float value)
@@ -58,9 +64,13 @@ public class Player : MonoBehaviour, IUpgradable
         float healthAsPercantage = _health / _maxHealth;
         HealthChanged?.Invoke(healthAsPercantage);
     }
-    private void Die()
+
+    private IEnumerator Die()
     {
         PlayerDied?.Invoke();
+        Debug.Log("Я запустился");
+        _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.die);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
 }

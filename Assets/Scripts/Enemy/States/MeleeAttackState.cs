@@ -16,8 +16,10 @@ public class MeleeAttackState : EnemyState
         {
             Enemy.Animator.SetTrigger("attack");
             yield return new WaitForSeconds(Enemy.AttackDelay);
-            if (Player != null)
+            if (Player != null && Player.Health >= 0)
                 Player.ApplyDamage(Enemy.Damage);
+            else
+                StopCoroutine(Attack());
         }
     }
 

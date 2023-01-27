@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator), typeof(NavMeshAgent), typeof(BoxCollider))]
 public class Enemy : MonoBehaviour
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour
     private Vector3 _offsetY = new Vector3(0, 1, 0);
 
     private int _gemsDropCount;
+
+    public UnityAction TookDamage;
 
     public float Health => _health;
     public float Damage => _damage;
@@ -57,6 +60,7 @@ public class Enemy : MonoBehaviour
 
     public void ApplyDamage(float damage)
     {
+        TookDamage?.Invoke();
         _health -= damage;
     }
 

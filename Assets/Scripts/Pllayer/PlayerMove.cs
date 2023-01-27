@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour, IUpgradable
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _additionalMoveSpeed;
 
-    public bool _hasTarget = false;
+    private bool _hasTarget = false;
 
     private CharacterController _characterController;
 
