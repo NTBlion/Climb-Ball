@@ -52,10 +52,4 @@ public class PlayerAttack : MonoBehaviour, IUpgradable
     {
         _damage += _additionalDamage;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position + _offset, _attackRange);
-    }
-
 }

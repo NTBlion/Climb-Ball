@@ -7867,8 +7867,9 @@ MonoBehaviour:
   _playerAnimator: {fileID: 2037541829}
   _playerAttack: {fileID: 2037541821}
   _moveSpeed: 2
-  _additionalMoveSpeed: 0.2
   _gravity: 3
+  _rotationSpeed: 20
+  _additionalMoveSpeed: 0.2
 --- !u!114 &2037541829
 MonoBehaviour:
   m_ObjectHideFlags: 0
