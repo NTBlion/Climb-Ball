@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,37 +9,22 @@ public class PlayerAttack : MonoBehaviour, IUpgradable
     [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private PlayerAnimator _playerAnimator;
 
-
     private float _attackDelay = 1f;
-    private float _radius = 2f;
-    private float _attackRange = 1.2f;
     private float _time = 0;
 
-    private Vector3 _offset = new Vector3(0, 1, 0);
-    private Collider[] _hitEnemies;
-
-    public event UnityAction<Enemy> Attacked;
-
-    public float AttackDelay => _attackDelay;
+    private bool _isCorutineActive = false;
 
     private void FixedUpdate()
     {
-        _hitEnemies = Physics.OverlapSphere(transform.position + _offset, _radius, _enemyMask);
+        Vector3 yOffset = new Vector3(0, 1, 0);
 
-        if (_time > _attackDelay)
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + yOffset, transform.forward, out hit, 2f, _enemyMask))
         {
-            foreach (var enemy in _hitEnemies)
+            if (_time > _attackDelay)
             {
-                if (Vector3.Distance(enemy.transform.position, transform.position) <= _attackRange)
-                {
-                    _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.attack);
-
-                    var attackedEnemy = enemy.GetComponent<Enemy>();
-                    Attacked?.Invoke(attackedEnemy);
-                    attackedEnemy.ApplyDamage(_damage);
-
-                    _time = 0;
-                }
+                Debug.Log("Я запустился");
+                StartCoroutine(Attack(hit));
             }
         }
     }
@@ -51,5 +37,19 @@ public class PlayerAttack : MonoBehaviour, IUpgradable
     public void Upgrade()
     {
         _damage += _additionalDamage;
+    }
+
+    private IEnumerator Attack(RaycastHit hit)
+    {
+        if (hit.transform.TryGetComponent(out Enemy enemy))
+        {
+            if(_time > _attackDelay)
+            {
+                _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.attack);
+                enemy.ApplyDamage(_damage);
+                yield return new WaitForSeconds(_attackDelay);
+                _time = 0;
+            }
+        }
     }
 }

@@ -25,16 +25,6 @@ public class PlayerMove : MonoBehaviour, IUpgradable
         _characterController = GetComponent<CharacterController>();
     }
 
-    private void OnEnable()
-    {
-        _playerAttack.Attacked += OnPlayerAttack;
-    }
-
-    private void OnDisable()
-    {
-        _playerAttack.Attacked -= OnPlayerAttack;
-    }
-
     private void Update()
     {
         transform.rotation = Quaternion.Lerp(transform.rotation, _targetRotation, _rotationSpeed * Time.deltaTime);
@@ -67,19 +57,5 @@ public class PlayerMove : MonoBehaviour, IUpgradable
             _lookDirection = Vector3.RotateTowards(transform.forward, _moveDirection, _moveSpeed, 2f);
             _targetRotation = Quaternion.LookRotation(_lookDirection);
         }
-    }
-
-    private void OnPlayerAttack(Enemy attackedEnemy)
-    {
-        StartCoroutine(SetTarget(attackedEnemy));
-    }
-
-    private IEnumerator SetTarget(Enemy attackedEnemy)
-    {
-        _hasTarget = true;
-        var targetRotation = Quaternion.LookRotation(attackedEnemy.transform.position - transform.position);
-        _targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
-        yield return new WaitForSeconds(_playerAttack.AttackDelay);
-        _hasTarget = false;
     }
 }

@@ -938,7 +938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gemTemplate: {fileID: 2566653234819819679, guid: a46ec114d125b3743bcceb157df289c6, type: 3}
-  _health: 1
+  _health: 50
   _damage: 1
   _attackDelay: 1
   _minGemValue: 1
