@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class MenuEnabler : MonoBehaviour
+namespace UI.WorldElements
 {
-    [SerializeField] private Menu _menu;
-
-    private void OnTriggerEnter(Collider other)
+    public class MenuEnabler : MonoBehaviour
     {
-        _menu.gameObject.SetActive(true);
-    }
+        [SerializeField] private Menu _menu;
 
-    private void OnTriggerExit(Collider other)
-    {
-        _menu.gameObject.SetActive(false);
+        private void OnTriggerEnter(Collider other)
+        {
+            _menu.gameObject.SetActive(true);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            _menu.gameObject.SetActive(false);
+        }
     }
 }

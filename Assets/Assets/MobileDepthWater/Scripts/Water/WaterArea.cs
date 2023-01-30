@@ -1,7 +1,7 @@
-namespace Assets.Scripts.Water
-{
-    using UnityEngine;
+using UnityEngine;
 
+namespace Assets.MobileDepthWater.Scripts.Water
+{
     /// <summary>
     /// Area that belongs to some water
     /// </summary>

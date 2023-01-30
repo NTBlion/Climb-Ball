@@ -1,9 +1,14 @@
 
-public class DiedTransition : EnemyTransition
+using Enemy.StateMachine;
+
+namespace Enemy.Transitions
 {
-    private void Update()
+    public class DiedTransition : EnemyTransition
     {
-        if (Enemy.Health <= 0)
-            NeedTransit = true;
+        private void Update()
+        {
+            if (Enemy.Health <= 0)
+                NeedTransit = true;
+        }
     }
 }

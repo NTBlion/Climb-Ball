@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IUpgradable
+namespace UpgradeSystem
 {
-    public void Upgrade();
+    public interface IUpgradable
+    {
+        public void Upgrade();
+    }
 }

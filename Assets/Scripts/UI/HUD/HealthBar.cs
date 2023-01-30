@@ -1,23 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+namespace UI.HUD
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private Image _healthBarFilling;
-
-    private void OnEnable()
+    public class HealthBar : MonoBehaviour
     {
-        _player.HealthChanged += OnHealthChanged;
-    }
+        [SerializeField] private Player.Player _player;
+        [SerializeField] private Image _healthBarFilling;
 
-    private void OnDisable()
-    {
-        _player.HealthChanged -= OnHealthChanged;
-    }
+        private void OnEnable()
+        {
+            _player.HealthChanged += OnHealthChanged;
+        }
 
-    private void OnHealthChanged(float valueAsPercantage)
-    {
-        _healthBarFilling.fillAmount = valueAsPercantage;
+        private void OnDisable()
+        {
+            _player.HealthChanged -= OnHealthChanged;
+        }
+
+        private void OnHealthChanged(float valueAsPercantage)
+        {
+            _healthBarFilling.fillAmount = valueAsPercantage;
+        }
     }
 }

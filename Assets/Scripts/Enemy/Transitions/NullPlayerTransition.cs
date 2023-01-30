@@ -1,9 +1,14 @@
 
-public class NullPlayerTransition : EnemyTransition
+using Enemy.StateMachine;
+
+namespace Enemy.Transitions
 {
-    private void Update()
+    public class NullPlayerTransition : EnemyTransition
     {
-        if (Player == null)
-            NeedTransit = true;
+        private void Update()
+        {
+            if (Player == null)
+                NeedTransit = true;
+        }
     }
 }

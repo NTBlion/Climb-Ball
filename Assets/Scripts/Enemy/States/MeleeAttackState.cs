@@ -1,37 +1,41 @@
 using System.Collections;
+using Enemy.StateMachine;
 using UnityEngine;
 
-public class MeleeAttackState : EnemyState
+namespace Enemy.States
 {
-    private Coroutine _attackJob;
-
-    private void OnEnable()
+    public class MeleeAttackState : EnemyState
     {
-        _attackJob = StartCoroutine(Attack());
-    }
+        private Coroutine _attackJob;
 
-    private IEnumerator Attack()
-    {
-        while (Enemy.enabled)
+        private void OnEnable()
         {
-            Enemy.Animator.SetTrigger("attack");
-            yield return new WaitForSeconds(Enemy.AttackDelay);
-
-            if (Player != null && Player.Health >= 0)
-                Player.ApplyDamage(Enemy.Damage);
-            else
-                StopCoroutine(Attack());
+            _attackJob = StartCoroutine(Attack());
         }
-    }
 
-    private void Update()
-    {
-        if (Player != null)
-            Enemy.transform.LookAt(Player.transform.position); //œÓÁÊÂ ÔÂÂ‰ÂÎ‡Ú¸, ˜ÚÓ·˚ ÔÎ‡‚ÌÂÂ ÔÓ‚Ó‡˜Ë‚‡ÎÒˇ
-    }
+        private IEnumerator Attack()
+        {
+            while (Enemy.enabled)
+            {
+                Enemy.Animator.SetTrigger("attack");
+                yield return new WaitForSeconds(Enemy.AttackDelay);
 
-    private void OnDisable()
-    {
-        StopCoroutine(_attackJob);
+                if (Player != null && Player.Health >= 0)
+                    Player.ApplyDamage(Enemy.Damage);
+                else
+                    StopCoroutine(Attack());
+            }
+        }
+
+        private void Update()
+        {
+            if (Player != null)
+                Enemy.transform.LookAt(Player.transform.position); //–ü–æ–∑–∂–µ –ø–µ—Ä–µ–¥–µ–ª–∞—Ç—å, —á—Ç–æ–±—ã –ø–ª–∞–≤–Ω–µ–µ –ø–æ–≤–æ—Ä–∞—á–∏–≤–∞–ª—Å—è
+        }
+
+        private void OnDisable()
+        {
+            StopCoroutine(_attackJob);
+        }
     }
 }

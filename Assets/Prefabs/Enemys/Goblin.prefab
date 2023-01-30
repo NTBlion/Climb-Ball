@@ -906,7 +906,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428504861946745138}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.44, y: 1, z: 0.4}
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gemTemplate: {fileID: 2566653234819819679, guid: a46ec114d125b3743bcceb157df289c6, type: 3}
-  _health: 50
+  _health: 2
   _damage: 1
   _attackDelay: 1
   _minGemValue: 1

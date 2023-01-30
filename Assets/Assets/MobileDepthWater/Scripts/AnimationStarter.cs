@@ -1,7 +1,7 @@
-namespace Assets.MobileOptimizedWater.Scripts
-{
-    using UnityEngine;
+using UnityEngine;
 
+namespace Assets.MobileDepthWater.Scripts
+{
     public class AnimationStarter : MonoBehaviour
     {
         [SerializeField] private Animator animator;

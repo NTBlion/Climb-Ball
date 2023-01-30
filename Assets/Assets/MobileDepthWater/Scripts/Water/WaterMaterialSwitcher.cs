@@ -1,7 +1,7 @@
-namespace Assets.Scripts.Water
-{
-    using UnityEngine;
+using UnityEngine;
 
+namespace Assets.MobileDepthWater.Scripts.Water
+{
     /// <summary>
     /// This class switchs material of dynamic objects if they enter or exit any water area
     /// After switching to water material it pushes water area properties to dynamic object material

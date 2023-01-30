@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroRotating : MonoBehaviour
+namespace UI.MainMenu
 {
-    [SerializeField] private float _rotateSpeed;
-
-
-    private void Update()
+    public class HeroRotating : MonoBehaviour
     {
-        transform.Rotate(Vector3.up, _rotateSpeed * Time.deltaTime);
+        [SerializeField] private float _rotateSpeed;
+
+
+        private void Update()
+        {
+            transform.Rotate(Vector3.up, _rotateSpeed * Time.deltaTime);
+        }
     }
 }

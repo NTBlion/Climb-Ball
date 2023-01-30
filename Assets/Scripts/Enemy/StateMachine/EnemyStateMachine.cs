@@ -1,46 +1,49 @@
 using UnityEngine;
 
-public class EnemyStateMachine : MonoBehaviour
+namespace Enemy.StateMachine
 {
-    [SerializeField] private EnemyState _firstState;
-
-    private EnemyState _currentState;
-
-    public Player Player { get; private set; }
-    public Enemy Enemy { get; private set; }
-
-    private void Awake()
+    public class EnemyStateMachine : MonoBehaviour
     {
-        Enemy = GetComponent<Enemy>();
+        [SerializeField] private EnemyState _firstState;
 
-        Player = FindObjectOfType<Player>();
-    }
+        private EnemyState _currentState;
 
-    private void Start()
-    {
-        _currentState = _firstState;
-        _currentState.Enter(Enemy, Player);
-    }
+        public Player.Player Player { get; private set; }
+        public Enemy Enemy { get; private set; }
 
-    private void Update()
-    {
-        if (_currentState == null)
-            return;
+        private void Awake()
+        {
+            Enemy = GetComponent<Enemy>();
 
-        EnemyState nextState = _currentState.GetNextState();
+            Player = FindObjectOfType<Player.Player>();
+        }
 
-        if (nextState != null)
-            Transit(nextState);
-    }
-
-    private void Transit(EnemyState nextState)
-    {
-        if (_currentState != null)
-            _currentState.Exit();
-
-        _currentState = nextState;
-
-        if (_currentState != null)
+        private void Start()
+        {
+            _currentState = _firstState;
             _currentState.Enter(Enemy, Player);
+        }
+
+        private void Update()
+        {
+            if (_currentState == null)
+                return;
+
+            EnemyState nextState = _currentState.GetNextState();
+
+            if (nextState != null)
+                Transit(nextState);
+        }
+
+        private void Transit(EnemyState nextState)
+        {
+            if (_currentState != null)
+                _currentState.Exit();
+
+            _currentState = nextState;
+
+            if (_currentState != null)
+                _currentState.Enter(Enemy, Player);
+        }
     }
 }

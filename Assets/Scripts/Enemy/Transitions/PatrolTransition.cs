@@ -1,18 +1,22 @@
+using Enemy.StateMachine;
 using UnityEngine;
 
-public class PatrolTransition : EnemyTransition
+namespace Enemy.Transitions
 {
-    [SerializeField] private float _patrolCooldown = 12;
-    private float _time = 0;
-
-    private void Update()
+    public class PatrolTransition : EnemyTransition
     {
-        _time += Time.deltaTime;
+        [SerializeField] private float _patrolCooldown = 12;
+        private float _time = 0;
 
-        if (_time > _patrolCooldown)
+        private void Update()
         {
-            NeedTransit = true;
-            _time = 0;
+            _time += Time.deltaTime;
+
+            if (_time > _patrolCooldown)
+            {
+                NeedTransit = true;
+                _time = 0;
+            }
         }
     }
 }

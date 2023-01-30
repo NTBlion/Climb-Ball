@@ -1,6 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
-public class SpawnArea : MonoBehaviour
+namespace Spawner
 {
+    [RequireComponent(typeof(BoxCollider))]
+    public class SpawnArea : MonoBehaviour
+    {
+    }
 }

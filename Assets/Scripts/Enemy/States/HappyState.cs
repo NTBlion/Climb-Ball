@@ -1,9 +1,14 @@
 
-public class HappyState : EnemyState
+using Enemy.StateMachine;
+
+namespace Enemy.States
 {
-    private void OnEnable()
+    public class HappyState : EnemyState
     {
-        Enemy.Weapon.gameObject.SetActive(false);
-        Enemy.Animator.SetTrigger("dance");
+        private void OnEnable()
+        {
+            Enemy.Weapon.gameObject.SetActive(false);
+            Enemy.Animator.SetTrigger("dance");
+        }
     }
 }

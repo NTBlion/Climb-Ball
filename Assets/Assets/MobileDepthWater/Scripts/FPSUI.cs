@@ -1,9 +1,8 @@
-namespace Assets.MobileOptimizedWater.Scripts
-{
-    using Assets.Scripts.Helpers;
-    using UnityEngine;
-    using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.UI;
 
+namespace Assets.MobileDepthWater.Scripts
+{
     public class FPSUI : MonoBehaviour
     {
         [SerializeField] private Text fpsText;
