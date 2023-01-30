@@ -9,7 +9,8 @@ namespace Enemy
         [SerializeField] private SkinnedMeshRenderer _meshRenderer;
         [SerializeField] private Material _hitMaterial;
 
-        private float _delay = 0.7f;
+        private float _delayBeforeResetMaterial = 0.7f;
+        private float _delayBeforeChangeMaterial = 0.3f;
 
         private Enemy _enemy;
         private Material _startMaterial;
@@ -39,9 +40,9 @@ namespace Enemy
 
         private IEnumerator ChangeMaterial()
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(_delayBeforeChangeMaterial);
             _meshRenderer.material = _hitMaterial;
-            yield return new WaitForSeconds(_delay);
+            yield return new WaitForSeconds(_delayBeforeResetMaterial);
             _meshRenderer.material = _startMaterial;
             StopCoroutine(ChangeMaterial());
         }

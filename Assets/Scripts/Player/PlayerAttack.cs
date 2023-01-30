@@ -9,10 +9,10 @@ namespace Player
     public class PlayerAttack : MonoBehaviour, IUpgradable
     {
         [SerializeField] private float _damage;
+        [SerializeField] private float _attackRange;
         [SerializeField] private float _additionalDamage;
         [SerializeField] private PlayerAnimator _playerAnimator;
         [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private float _attackRange;
 
         private float _attackDelay = 1f;
         private float _time;
@@ -31,7 +31,7 @@ namespace Player
                     _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.attack);
                     hit.GetComponent<Enemy.Enemy>().ApplyDamage(_damage);
                 }
-
+                
                 _time = 0;
             }
         }

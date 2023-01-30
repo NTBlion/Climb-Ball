@@ -15,9 +15,8 @@ namespace Player
         [SerializeField] private float _additionalMoveSpeed;
 
         private bool _hasTarget = false;
-
+        
         private CharacterController _characterController;
-
         private Vector3 _lookDirection;
         private Vector3 _moveDirection;
         private Quaternion _targetRotation;
@@ -33,8 +32,7 @@ namespace Player
             _characterController.Move(new Vector3(0, _gravity * -Time.deltaTime, 0));
 
             Move();
-            if (_hasTarget == false)
-                Rotate();
+            Rotate();
 
         }
         public void Upgrade()
@@ -46,9 +44,12 @@ namespace Player
         {
             _moveDirection.x = _joystick.MoveHorizontal();
             _moveDirection.z = _joystick.MoveVertical();
+            
             _characterController.Move(_moveDirection * (_moveSpeed * Time.deltaTime));
-            float tempMoveDirectionX = Mathf.Abs(_moveDirection.x);
-            float tempMoveDirectionZ = Mathf.Abs(_moveDirection.z);
+            
+            var tempMoveDirectionX = Mathf.Abs(_moveDirection.x);
+            var tempMoveDirectionZ = Mathf.Abs(_moveDirection.z);
+            
             _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.movement, tempMoveDirectionX + tempMoveDirectionZ);
         }
 

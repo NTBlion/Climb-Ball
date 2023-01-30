@@ -1500,6 +1500,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330802106}
   m_CullTransparentMesh: 1
+--- !u!114 &356571874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5842051993154620711, guid: 8bd352546971ab24d9459db359be037f, type: 3}
+  m_PrefabInstance: {fileID: 483895933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0135db35a9b12594ca313de76797ea91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &360369425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,6 +2603,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 476148595}
     m_Modifications:
+    - target: {fileID: 5842051993255618348, guid: 8bd352546971ab24d9459db359be037f, type: 3}
+      propertyPath: _spawnArea
+      value: 
+      objectReference: {fileID: 356571874}
     - target: {fileID: 5842051993255618349, guid: 8bd352546971ab24d9459db359be037f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8000,12 +8015,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _attackRange: 1.42
   _additionalDamage: 2
   _playerAnimator: {fileID: 2037541829}
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
-  _attackRange: 1.42
 --- !u!1 &2072719573
 GameObject:
   m_ObjectHideFlags: 0

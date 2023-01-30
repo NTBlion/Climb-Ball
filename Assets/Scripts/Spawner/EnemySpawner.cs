@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Spawner
 {
@@ -7,9 +7,8 @@ namespace Spawner
     {
         [SerializeField] private Enemy.Enemy _enemyTemplate;
         [SerializeField] private int _enemyCount;
-        [SerializeField] private BoxCollider _spawnArea;
 
-        private List<Vector3> _usedSpawnPoints;
+        private SpawnArea _spawnArea;
 
         private void OnValidate()
         {
@@ -19,7 +18,7 @@ namespace Spawner
 
         private void Awake()
         {
-            _usedSpawnPoints = new List<Vector3>();
+            _spawnArea = GetComponentInChildren<SpawnArea>();
         }
 
         private void Start()
@@ -27,30 +26,14 @@ namespace Spawner
             Spawn();
         }
 
-        private void Spawn()
+        public void Spawn()
         {
             for (int i = 0; i < _enemyCount; i++)
             {
-                Vector3 randomVector = GenerateRandomSpawnPoint();
-                _usedSpawnPoints.Add(randomVector);
+                Vector3 randomVector = _spawnArea.GenerateRandomSpawnPoint();
+                _spawnArea.UsedSpawnPoints.Add(randomVector);
                 Instantiate(_enemyTemplate, randomVector, Quaternion.Euler(0, Random.Range(0, 360), 0), transform);
             }
-        }
-
-        private Vector3 GenerateRandomSpawnPoint()
-        {
-            int randomX;
-            int randomZ;
-
-            randomX = (int)Random.Range(_spawnArea.bounds.min.x, _spawnArea.bounds.max.x);
-            randomZ = (int)Random.Range(_spawnArea.bounds.min.z, _spawnArea.bounds.max.z);
-
-            Vector3 tempVector = new Vector3(randomX, 0f, randomZ);
-
-            if (_usedSpawnPoints.Contains(tempVector))
-                return GenerateRandomSpawnPoint();
-
-            return tempVector;
         }
     }
 }
