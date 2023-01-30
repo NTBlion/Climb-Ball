@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class Menu : MonoBehaviour
+namespace UI.WorldElements
 {
-    private void Awake()
+    public class Menu : MonoBehaviour
     {
-        gameObject.SetActive(false);
+        private void Awake()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

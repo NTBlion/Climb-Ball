@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class MenuModel
+namespace UI.MainMenu
 {
-    [SerializeField] private string _gameScene;
+    [Serializable]
+    public class MenuModel
+    {
+        [SerializeField] private string _gameScene;
 
-    public int CurrentCharacterIndex { get; set; }
+        public int CurrentCharacterIndex { get; set; }
 
-    public string GameScene => _gameScene;
+        public string GameScene => _gameScene;
+    }
 }

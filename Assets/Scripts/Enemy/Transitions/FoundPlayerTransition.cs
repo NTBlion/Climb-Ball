@@ -1,15 +1,19 @@
+using Enemy.StateMachine;
 using UnityEngine;
 
-public class FoundPlayerTransition : EnemyTransition
+namespace Enemy.Transitions
 {
-    [SerializeField] private float _foundDistance;
-
-    private void Update()
+    public class FoundPlayerTransition : EnemyTransition
     {
-        if(Player != null)
+        [SerializeField] private float _foundDistance;
+
+        private void Update()
         {
-            if (Vector3.Distance(Player.transform.position, Enemy.transform.position) < _foundDistance)
-                NeedTransit = true;
+            if(Player != null)
+            {
+                if (Vector3.Distance(Player.transform.position, Enemy.transform.position) < _foundDistance)
+                    NeedTransit = true;
+            }
         }
     }
 }

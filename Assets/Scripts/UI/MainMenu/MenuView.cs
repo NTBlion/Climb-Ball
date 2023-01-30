@@ -1,19 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuView : MonoBehaviour
+namespace UI.MainMenu
 {
-    [SerializeField] private List<GameObject> _charactersList;
-
-    public int CharactersCount => _charactersList.Count;
-
-    public void SetCharacter(int index)
+    public class MenuView : MonoBehaviour
     {
-        foreach (var character in _charactersList)
-        {
-            character.SetActive(false);
-        }
+        [SerializeField] private List<GameObject> _charactersList;
 
-        _charactersList[index].SetActive(true);
+        public int CharactersCount => _charactersList.Count;
+
+        public void SetCharacter(int index)
+        {
+            foreach (var character in _charactersList)
+            {
+                character.SetActive(false);
+            }
+
+            _charactersList[index].SetActive(true);
+        }
     }
 }

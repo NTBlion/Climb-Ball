@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class EnemyWeapon : MonoBehaviour
+namespace Enemy
 {
+    public class EnemyWeapon : MonoBehaviour
+    {
+    }
 }

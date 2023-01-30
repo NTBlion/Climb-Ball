@@ -1,7 +1,7 @@
-namespace Assets.Scripts.Water
-{
-    using UnityEngine;
+using UnityEngine;
 
+namespace Assets.MobileDepthWater.Scripts.Water
+{
     /// <summary>
     /// This class helps you to set water properties for a lot of materials at the same time. 
     /// So you don't have to make it for each independently.

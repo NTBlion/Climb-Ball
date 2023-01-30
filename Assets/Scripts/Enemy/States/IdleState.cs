@@ -1,8 +1,13 @@
 
-public class IdleState : EnemyState
+using Enemy.StateMachine;
+
+namespace Enemy.States
 {
-    private void OnEnable()
+    public class IdleState : EnemyState
     {
-        Enemy.Animator.SetTrigger("idle");
+        private void OnEnable()
+        {
+            Enemy.Animator.SetTrigger("idle");
+        }
     }
 }

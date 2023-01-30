@@ -1,28 +1,31 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class DamagePriceUpdater : MonoBehaviour
+namespace UI.Menu
 {
-    [SerializeField] private UpgradeSystem _upgradeSystem;
-    [SerializeField] private TMP_Text _price;
-
-    private void Awake()
+    public class DamagePriceUpdater : MonoBehaviour
     {
-        _price.text = _upgradeSystem.DamageUpgradePrice.ToString();
-    }
+        [SerializeField] private UpgradeSystem.UpgradeSystem _upgradeSystem;
+        [SerializeField] private TMP_Text _price;
 
-    private void OnEnable()
-    {
-        _upgradeSystem.DamagePriceChanged += OnDamagePriceChange;
-    }
+        private void Awake()
+        {
+            _price.text = _upgradeSystem.DamageUpgradePrice.ToString();
+        }
 
-    private void OnDisable()
-    {
-        _upgradeSystem.DamagePriceChanged -= OnDamagePriceChange;
-    }
+        private void OnEnable()
+        {
+            _upgradeSystem.DamagePriceChanged += OnDamagePriceChange;
+        }
 
-    private void OnDamagePriceChange(float upgradePrice)
-    {
-        _price.text = upgradePrice.ToString();
+        private void OnDisable()
+        {
+            _upgradeSystem.DamagePriceChanged -= OnDamagePriceChange;
+        }
+
+        private void OnDamagePriceChange(float upgradePrice)
+        {
+            _price.text = upgradePrice.ToString();
+        }
     }
 }

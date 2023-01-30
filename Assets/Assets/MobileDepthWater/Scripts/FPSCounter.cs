@@ -1,7 +1,7 @@
-namespace Assets.Scripts.Helpers
-{
-    using UnityEngine;
+using UnityEngine;
 
+namespace Assets.MobileDepthWater.Scripts
+{
     public class FPSCounter
     {
         private const float Frequency = 0.1f;

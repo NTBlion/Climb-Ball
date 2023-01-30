@@ -1,24 +1,28 @@
-using UnityEngine;
+using Player;
 using TMPro;
+using UnityEngine;
 
-public class MoneyCount : MonoBehaviour
+namespace UI.HUD
 {
-    [SerializeField] private Wallet _wallet;
-    [SerializeField] private TMP_Text _moneyCount;
-
-    private void OnEnable()
+    public class MoneyCount : MonoBehaviour
     {
-        _wallet.GemsCountChanged += OnGemAdded;
-    }
+        [SerializeField] private Wallet _wallet;
+        [SerializeField] private TMP_Text _moneyCount;
 
-    private void OnDisable()
-    {
-        _wallet.GemsCountChanged -= OnGemAdded;
-    }
+        private void OnEnable()
+        {
+            _wallet.GemsCountChanged += OnGemAdded;
+        }
 
-    private void OnGemAdded(float gemCount)
-    {
-        _moneyCount.text = gemCount.ToString();
-    }
+        private void OnDisable()
+        {
+            _wallet.GemsCountChanged -= OnGemAdded;
+        }
 
+        private void OnGemAdded(float gemCount)
+        {
+            _moneyCount.text = gemCount.ToString();
+        }
+
+    }
 }

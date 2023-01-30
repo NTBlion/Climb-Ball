@@ -1,74 +1,83 @@
+using System;
+using PickUp;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Animator), typeof(NavMeshAgent), typeof(BoxCollider))]
-public class Enemy : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField] private Gem _gemTemplate;
-    [SerializeField] private float _health = 1;
-    [SerializeField] private float _damage = 1;
-    [SerializeField] private float _attackDelay = 1;
-    [SerializeField] private int _minGemValue = 1;
-    [SerializeField] private int _maxGemValue = 4;
-
-    private EnemyWeapon _weapon;
-    private NavMeshAgent _agent;
-    private Animator _animator;
-    private BoxCollider _boxCollider;
-
-    private Vector3 _offsetY = new Vector3(0, 1, 0);
-
-    private int _gemsDropCount;
-
-    public UnityAction TookDamage;
-
-    public float Health => _health;
-    public float Damage => _damage;
-    public float AttackDelay => _attackDelay;
-    public NavMeshAgent Agent => _agent;
-    public Animator Animator => _animator;
-    public BoxCollider BoxCollider => _boxCollider;
-    public EnemyWeapon Weapon => _weapon;
-
-    private void OnValidate()
+    [RequireComponent(typeof(Animator), typeof(NavMeshAgent), typeof(BoxCollider))]
+    public class Enemy : MonoBehaviour
     {
-        if (_health <= 0)
-            _health = 1;
+        [SerializeField] private Gem _gemTemplate;
+        [SerializeField] private float _health = 1;
+        [SerializeField] private float _damage = 1;
+        [SerializeField] private float _attackDelay = 1;
+        [SerializeField] private int _minGemValue = 1;
+        [SerializeField] private int _maxGemValue = 4;
 
-        if (_damage <= 0)
-            _damage = 1;
+        
+        private int _gemsDropCount;
 
-        if (_attackDelay <= 0)
-            _attackDelay = 1;
+        private EnemyWeapon _weapon;
+        private NavMeshAgent _agent;
+        private Animator _animator;
+        private BoxCollider _boxCollider;
 
-        if (_minGemValue <= 0)
+        private Vector3 _offsetY = new Vector3(0, 1, 0);
+
+
+        public UnityAction TookDamage;
+
+        public bool CanBeHit { get; set; }
+        public float Health => _health;
+        public float Damage => _damage;
+        public float AttackDelay => _attackDelay;
+        public NavMeshAgent Agent => _agent;
+        public Animator Animator => _animator;
+        public BoxCollider BoxCollider => _boxCollider;
+        public EnemyWeapon Weapon => _weapon;
+
+        private void OnValidate()
         {
-            _minGemValue = 1;
+            if (_health <= 0)
+                _health = 1;
+
+            if (_damage <= 0)
+                _damage = 1;
+
+            if (_attackDelay <= 0)
+                _attackDelay = 1;
+
+            if (_minGemValue <= 0)
+            {
+                _minGemValue = 1;
+            }
         }
-    }
 
-    private void Awake()
-    {
-        _gemsDropCount = Random.Range(_minGemValue, _maxGemValue);
-
-        _boxCollider = GetComponent<BoxCollider>();
-        _agent = GetComponent<NavMeshAgent>();
-        _animator = GetComponent<Animator>();
-        _weapon = GetComponentInChildren<EnemyWeapon>();
-    }
-
-    public void ApplyDamage(float damage)
-    {
-        TookDamage?.Invoke();
-        _health -= damage;
-    }
-
-    public void DropGem()
-    {
-        for (int i = 0; i < _gemsDropCount; i++)
+        private void Awake()
         {
-            Instantiate(_gemTemplate, transform.position + _offsetY, Quaternion.identity);
+            _gemsDropCount = Random.Range(_minGemValue, _maxGemValue);
+
+            _boxCollider = GetComponent<BoxCollider>();
+            _agent = GetComponent<NavMeshAgent>();
+            _animator = GetComponent<Animator>();
+            _weapon = GetComponentInChildren<EnemyWeapon>();
+        }
+
+        public void ApplyDamage(float damage)
+        {
+            TookDamage?.Invoke();
+            _health -= damage;
+        }
+
+        public void DropGem()
+        {
+            for (int i = 0; i < _gemsDropCount; i++)
+            {
+                Instantiate(_gemTemplate, transform.position + _offsetY, Quaternion.identity);
+            }
         }
     }
 }

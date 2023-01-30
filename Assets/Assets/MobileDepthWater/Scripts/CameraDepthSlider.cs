@@ -1,8 +1,8 @@
-namespace Assets.MobileOptimizedWater.Scripts
-{
-    using UnityEngine;
-    using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.UI;
 
+namespace Assets.MobileDepthWater.Scripts
+{
     public class CameraDepthSlider : MonoBehaviour
     {
         [SerializeField] private Slider slider;

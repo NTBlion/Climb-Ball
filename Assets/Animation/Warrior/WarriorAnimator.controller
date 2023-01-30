@@ -32,7 +32,7 @@ AnimatorStateMachine:
     m_Position: {x: 50, y: -280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4889365398422267203}
-    m_Position: {x: 270, y: -120, z: 0}
+    m_Position: {x: 270, y: -150, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 4502399856692603467}
@@ -318,6 +318,21 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!206 &489270191990366615
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blend Tree
+  m_Childs: []
+  m_BlendParameter: movement
+  m_BlendParameterY: movement
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 1
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
 --- !u!206 &954095576073122214
 BlendTree:
   m_ObjectHideFlags: 1

@@ -1,40 +1,43 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+namespace UI.MainMenu
 {
-    [SerializeField] private MenuModel _model;
-    [SerializeField] private MenuView _view;
-
-    public void StartGame()
+    public class MenuController : MonoBehaviour
     {
-        SceneManager.LoadScene(_model.GameScene);
-    }
+        [SerializeField] private MenuModel _model;
+        [SerializeField] private MenuView _view;
 
-    public void Exit()
-    {
-        Debug.Log("Выйти из игры");
-    }
-
-    public void RateUs()
-    {
-        Debug.Log("Поставил 5 звёзд");
-    }
-
-    public void ChangeCharacter(int value)
-    {
-        int currentValue = _model.CurrentCharacterIndex + value;
-
-        if (currentValue < 0)
+        public void StartGame()
         {
-            currentValue = _view.CharactersCount - 1;
-        }
-        else if (currentValue >= _view.CharactersCount)
-        {
-            currentValue = 0;
+            SceneManager.LoadScene(_model.GameScene);
         }
 
-        _model.CurrentCharacterIndex = currentValue;
-        _view.SetCharacter(currentValue);
+        public void Exit()
+        {
+            Debug.Log("Р’С‹Р№С‚Рё РёР· РёРіСЂС‹");
+        }
+
+        public void RateUs()
+        {
+            Debug.Log("РџРѕСЃС‚Р°РІРёР» 5 Р·РІС‘Р·Рґ");
+        }
+
+        public void ChangeCharacter(int value)
+        {
+            int currentValue = _model.CurrentCharacterIndex + value;
+
+            if (currentValue < 0)
+            {
+                currentValue = _view.CharactersCount - 1;
+            }
+            else if (currentValue >= _view.CharactersCount)
+            {
+                currentValue = 0;
+            }
+
+            _model.CurrentCharacterIndex = currentValue;
+            _view.SetCharacter(currentValue);
+        }
     }
 }

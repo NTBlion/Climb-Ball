@@ -1,9 +1,14 @@
 
-public class IdleTransition : EnemyTransition
+using Enemy.StateMachine;
+
+namespace Enemy.Transitions
 {
-    private void Update()
+    public class IdleTransition : EnemyTransition
     {
-        if (Enemy.Agent.remainingDistance <= Enemy.Agent.stoppingDistance)
-            NeedTransit = true;
+        private void Update()
+        {
+            if (Enemy.Agent.remainingDistance <= Enemy.Agent.stoppingDistance)
+                NeedTransit = true;
+        }
     }
 }

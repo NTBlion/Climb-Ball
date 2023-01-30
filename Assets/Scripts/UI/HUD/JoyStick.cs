@@ -2,51 +2,54 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+namespace UI.HUD
 {
-    [SerializeField] private Image _stick;
-    [SerializeField] private Image _joystickBackground;
-
-    private Vector2 _inputDirection;
-
-    public void OnPointerDown(PointerEventData eventData)
+    public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {
-        OnDrag(eventData);
-    }
+        [SerializeField] private Image _stick;
+        [SerializeField] private Image _joystickBackground;
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        Vector2 joystickPosition = Vector2.zero;
+        private Vector2 _inputDirection;
 
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_joystickBackground.rectTransform, eventData.position, null, out joystickPosition))
+        public void OnPointerDown(PointerEventData eventData)
         {
-            joystickPosition.x = (joystickPosition.x / _joystickBackground.rectTransform.sizeDelta.x);
-            joystickPosition.y = (joystickPosition.y / _joystickBackground.rectTransform.sizeDelta.y);
-
-            _inputDirection = new Vector2(joystickPosition.x * 2, joystickPosition.y * 2 - 1);
-            _inputDirection = (_inputDirection.magnitude > 1f) ? _inputDirection.normalized : _inputDirection;
-
-            _stick.rectTransform.anchoredPosition = new Vector2(_inputDirection.x * (_stick.rectTransform.sizeDelta.x / 2), _inputDirection.y * (_stick.rectTransform.sizeDelta.y / 2));
+            OnDrag(eventData);
         }
-    }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        _inputDirection = Vector2.zero;
-        _stick.rectTransform.anchoredPosition = Vector2.zero;
-    }
+        public void OnDrag(PointerEventData eventData)
+        {
+            Vector2 joystickPosition = Vector2.zero;
 
-    public float MoveHorizontal()
-    {
-        if (_inputDirection.x != 0)
-            return _inputDirection.x;
-        else return 0;
-    }
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_joystickBackground.rectTransform, eventData.position, null, out joystickPosition))
+            {
+                joystickPosition.x = (joystickPosition.x / _joystickBackground.rectTransform.sizeDelta.x);
+                joystickPosition.y = (joystickPosition.y / _joystickBackground.rectTransform.sizeDelta.y);
 
-    public float MoveVertical()
-    {
-        if (_inputDirection.y != 0)
-            return _inputDirection.y;
-        else return 0;
+                _inputDirection = new Vector2(joystickPosition.x * 2, joystickPosition.y * 2 - 1);
+                _inputDirection = (_inputDirection.magnitude > 1f) ? _inputDirection.normalized : _inputDirection;
+
+                _stick.rectTransform.anchoredPosition = new Vector2(_inputDirection.x * (_stick.rectTransform.sizeDelta.x / 2), _inputDirection.y * (_stick.rectTransform.sizeDelta.y / 2));
+            }
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            _inputDirection = Vector2.zero;
+            _stick.rectTransform.anchoredPosition = Vector2.zero;
+        }
+
+        public float MoveHorizontal()
+        {
+            if (_inputDirection.x != 0)
+                return _inputDirection.x;
+            else return 0;
+        }
+
+        public float MoveVertical()
+        {
+            if (_inputDirection.y != 0)
+                return _inputDirection.y;
+            else return 0;
+        }
     }
 }

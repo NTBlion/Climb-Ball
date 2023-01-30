@@ -1,28 +1,31 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class MoveSpeedPriceUpdater : MonoBehaviour
+namespace UI.Menu
 {
-    [SerializeField] private UpgradeSystem _upgradeSystem;
-    [SerializeField] private TMP_Text _price;
-
-    private void Awake()
+    public class MoveSpeedPriceUpdater : MonoBehaviour
     {
-        _price.text = _upgradeSystem.MoveUpgradePrice.ToString();
-    }
+        [SerializeField] private UpgradeSystem.UpgradeSystem _upgradeSystem;
+        [SerializeField] private TMP_Text _price;
 
-    private void OnEnable()
-    {
-        _upgradeSystem.MoveSpeedPriceChanged += OnMoveSpeedChange;
-    }
+        private void Awake()
+        {
+            _price.text = _upgradeSystem.MoveUpgradePrice.ToString();
+        }
 
-    private void OnDisable()
-    {
-        _upgradeSystem.MoveSpeedPriceChanged -= OnMoveSpeedChange;
-    }
+        private void OnEnable()
+        {
+            _upgradeSystem.MoveSpeedPriceChanged += OnMoveSpeedChange;
+        }
 
-    private void OnMoveSpeedChange(float upgradePrice)
-    {
-        _price.text = upgradePrice.ToString();
+        private void OnDisable()
+        {
+            _upgradeSystem.MoveSpeedPriceChanged -= OnMoveSpeedChange;
+        }
+
+        private void OnMoveSpeedChange(float upgradePrice)
+        {
+            _price.text = upgradePrice.ToString();
+        }
     }
 }
