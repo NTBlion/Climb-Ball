@@ -26,7 +26,7 @@ namespace Spawner
             Spawn();
         }
 
-        public void Spawn()
+        private void Spawn()
         {
             for (int i = 0; i < _enemyCount; i++)
             {
