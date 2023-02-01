@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemy
 {
-    [RequireComponent(typeof(Animator), typeof(NavMeshAgent), typeof(BoxCollider))]
+    [RequireComponent(typeof(Animator), typeof(NavMeshAgent), typeof(SphereCollider))]
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private Gem _gemTemplate;
@@ -23,7 +23,7 @@ namespace Enemy
         private EnemyWeapon _weapon;
         private NavMeshAgent _agent;
         private Animator _animator;
-        private BoxCollider _boxCollider;
+        private SphereCollider _collider;
 
         private Vector3 _offsetY = new Vector3(0, 1, 0);
 
@@ -36,7 +36,7 @@ namespace Enemy
         public float AttackDelay => _attackDelay;
         public NavMeshAgent Agent => _agent;
         public Animator Animator => _animator;
-        public BoxCollider BoxCollider => _boxCollider;
+        public SphereCollider Collider => _collider;
         public EnemyWeapon Weapon => _weapon;
 
         private void OnValidate()
@@ -60,7 +60,7 @@ namespace Enemy
         {
             _gemsDropCount = Random.Range(_minGemValue, _maxGemValue);
 
-            _boxCollider = GetComponent<BoxCollider>();
+            _collider = GetComponent<SphereCollider>();
             _agent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
             _weapon = GetComponentInChildren<EnemyWeapon>();

@@ -17,7 +17,7 @@ namespace Enemy.States
 
         private IEnumerator Die()
         {
-            Enemy.BoxCollider.enabled = false;
+            Enemy.Collider.enabled = false;
             Enemy.Agent.enabled = false;
             Enemy.Animator.SetTrigger("die");
             Enemy.DropGem();
