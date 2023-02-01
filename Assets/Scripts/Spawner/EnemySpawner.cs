@@ -24,9 +24,10 @@ namespace Spawner
         private void Start()
         {
             Spawn();
+            _spawnArea.UsedSpawnPoints.Clear();
         }
 
-        private void Spawn()
+        public void Spawn()
         {
             for (int i = 0; i < _enemyCount; i++)
             {
