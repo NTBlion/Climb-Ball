@@ -31,7 +31,6 @@ namespace Player
             }
             else
             {
-                isUpgraded = false;
                 return isUpgraded;
             }
         }

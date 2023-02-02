@@ -8,7 +8,7 @@ namespace Spawner
     public class SpawnArea : MonoBehaviour
     {
         private BoxCollider _boxCollider;
-        [HideInInspector] public List<Vector3> UsedSpawnPoints = new List<Vector3>();
+        private List<Vector3> _usedSpawnPoints = new List<Vector3>();
 
         private void Awake()
         {
@@ -22,7 +22,17 @@ namespace Spawner
 
             var tempVector = new Vector3(randomX, 0f, randomZ);
 
-            return UsedSpawnPoints.Contains(tempVector) ? GenerateRandomSpawnPoint() : tempVector;
+            return _usedSpawnPoints.Contains(tempVector) ? GenerateRandomSpawnPoint() : tempVector;
+        }
+
+        public void AddSpawnPoint(Vector3 spawnPoint)
+        {
+            _usedSpawnPoints.Add(spawnPoint);
+        }
+        
+        public void ClearSpawnPoints()
+        {
+            _usedSpawnPoints.Clear();
         }
     }
 }

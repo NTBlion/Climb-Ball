@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Camera
@@ -6,7 +7,6 @@ namespace Camera
     {
         [SerializeField] private Player.Player _player;
         [SerializeField] private Vector3 _offset;
-        [SerializeField] private Vector3 _offset2;
 
         private void LateUpdate()
         {

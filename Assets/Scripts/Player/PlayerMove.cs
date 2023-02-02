@@ -14,8 +14,6 @@ namespace Player
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _additionalMoveSpeed;
 
-        private bool _hasTarget = false;
-        
         private CharacterController _characterController;
         private Vector3 _lookDirection;
         private Vector3 _moveDirection;
