@@ -6,11 +6,12 @@ namespace Spawner
 {
     public class EnemySpawner : MonoBehaviour
     {
+        [SerializeField] private RestoreSystem.RestoreSystem _restoreSystem;
         [SerializeField] private Enemy.Enemy _enemyTemplate;
         [SerializeField] private int _enemyCount;
         [SerializeField] private SpawnArea[] _spawnArea;
 
-        public List<Enemy.Enemy> _spawnedEnemies = new List<Enemy.Enemy>();
+        private List<Enemy.Enemy> _spawnedEnemies = new List<Enemy.Enemy>();
 
         private void OnValidate()
         {
@@ -18,21 +19,18 @@ namespace Spawner
                 _enemyCount = 1;
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            Spawn();
-            ClearSpawnPoints();
+            _restoreSystem.EnemiesRestored += OnRestoreEnemies;
         }
 
-        public void RestoreEnemies()
+        private void OnDisable()
         {
-            foreach (var spawnedEnemy in _spawnedEnemies)
-            {
-                if (spawnedEnemy != null)
-                    Destroy(spawnedEnemy.gameObject);
-            }
+            _restoreSystem.EnemiesRestored -= OnRestoreEnemies;
+        }
 
-            _spawnedEnemies.Clear();
+        private void Start()
+        {
             Spawn();
             ClearSpawnPoints();
         }
@@ -61,6 +59,19 @@ namespace Spawner
         private Quaternion ReturnRandomAngle()
         {
             return Quaternion.Euler(0, Random.Range(0, 360), 0);
+        }
+
+        private void OnRestoreEnemies()
+        {
+            foreach (var spawnedEnemy in _spawnedEnemies)
+            {
+                if (spawnedEnemy != null)
+                    Destroy(spawnedEnemy.gameObject);
+            }
+
+            _spawnedEnemies.Clear();
+            Spawn();
+            ClearSpawnPoints();
         }
     }
 }

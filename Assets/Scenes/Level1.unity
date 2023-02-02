@@ -1206,7 +1206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243710738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 8.42, z: -5.08}
+  m_LocalPosition: {x: -4.49, y: 1.264, z: -7.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3812,7 +3812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820325301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1283884, y: 11.37817, z: -13.483}
+  m_LocalPosition: {x: -2.48, y: 11.37817, z: -13.483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4725,9 +4725,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5842051993558414610}
-        m_TargetAssemblyTypeName: Spawner.EnemySpawner, Assembly-CSharp
-        m_MethodName: Spawn
+      - m_Target: {fileID: 1103410442}
+        m_TargetAssemblyTypeName: RestoreSystem.RestoreSystem, Assembly-CSharp
+        m_MethodName: RestoreEnemies
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4958,7 +4958,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2037541822}
   _offset: {x: 0, y: 11, z: -8.2}
-  _offset2: {x: 0, y: 1.81, z: -3.23}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5498,7 +5497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.9667633, y: -7.4500003}
+  m_AnchoredPosition: {x: -3.29, y: -7.4500003}
   m_SizeDelta: {x: -15.46, y: -17.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1062143081
@@ -5719,6 +5718,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103271334}
   m_Mesh: {fileID: 4300000, guid: 305f277e1529222439b495a441de2f0b, type: 3}
+--- !u!1 &1103410441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103410443}
+  - component: {fileID: 1103410442}
+  m_Layer: 0
+  m_Name: RestoreSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1103410442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103410441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1774891ed5cb3b4cbb60891a8cfdc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1103410443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103410441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.413, y: 1.25, z: -7.211}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112194286
 GameObject:
   m_ObjectHideFlags: 0
@@ -8520,8 +8563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eeb4b4dbf6e50a4187e4149be44997a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 555
-  _maxHealth: 555
+  _health: 5
+  _maxHealth: 5
   _additionalHealth: 2
   _playerAnimator: {fileID: 2037541829}
 --- !u!4 &2037541827
@@ -8532,7 +8575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037541820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.009, y: 0.254, z: -3.63}
+  m_LocalPosition: {x: -0.38, y: 0.254, z: -7.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14403,6 +14446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361cf53f63d32524b87f9ad87fd6e6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _restoreSystem: {fileID: 1103410442}
   _enemyTemplate: {fileID: 8306196807111828831, guid: dc90bf72947724247befae24b4f0a427, type: 3}
   _enemyCount: 9
   _spawnArea:
@@ -16355,7 +16399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8680301532053658770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.052, y: -16.554, z: 15.005039}
+  m_LocalPosition: {x: 7.052, y: -16.554, z: 14.87}
   m_LocalScale: {x: 1.5, y: 1, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
