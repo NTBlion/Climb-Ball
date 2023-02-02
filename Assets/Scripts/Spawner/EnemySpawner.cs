@@ -7,8 +7,8 @@ namespace Spawner
     {
         [SerializeField] private Enemy.Enemy _enemyTemplate;
         [SerializeField] private int _enemyCount;
+        [SerializeField] private SpawnArea[] _spawnArea;
 
-        private SpawnArea _spawnArea;
 
         private void OnValidate()
         {
@@ -16,24 +16,26 @@ namespace Spawner
                 _enemyCount = 1;
         }
 
-        private void Awake()
-        {
-            _spawnArea = GetComponentInChildren<SpawnArea>();
-        }
-
         private void Start()
         {
             Spawn();
-            _spawnArea.UsedSpawnPoints.Clear();
         }
 
         public void Spawn()
         {
             for (int i = 0; i < _enemyCount; i++)
             {
-                Vector3 randomVector = _spawnArea.GenerateRandomSpawnPoint();
-                _spawnArea.UsedSpawnPoints.Add(randomVector);
-                Instantiate(_enemyTemplate, randomVector, Quaternion.Euler(0, Random.Range(0, 360), 0), transform);
+                for (int j = 0; j < _spawnArea.Length; j++)
+                {
+                    Vector3 randomVector = _spawnArea[j].GenerateRandomSpawnPoint();
+                    _spawnArea[j].UsedSpawnPoints.Add(randomVector);
+                    Instantiate(_enemyTemplate, randomVector, Quaternion.Euler(0, Random.Range(0, 360), 0), transform);
+                }
+            }
+
+            foreach (var spawnArea in _spawnArea)
+            {
+                spawnArea.UsedSpawnPoints.Clear();
             }
         }
     }

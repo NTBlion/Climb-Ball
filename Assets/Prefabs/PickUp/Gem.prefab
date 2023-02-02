@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 33592277513650734}
   - component: {fileID: 23595163521026256}
   - component: {fileID: 411942774}
-  - component: {fileID: 411942775}
   - component: {fileID: 2566653234819819679}
+  - component: {fileID: 802480061580907329}
   m_Layer: 7
   m_Name: Gem
   m_TagString: Untagged
@@ -102,20 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &411942775
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989901591261424}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300010, guid: 2fa528ee8e91e55468e2fa9820a7064e, type: 3}
 --- !u!114 &2566653234819819679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,3 +119,16 @@ MonoBehaviour:
   _playerMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!135 &802480061580907329
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989901591261424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.32
+  m_Center: {x: 0, y: 0, z: 0}
