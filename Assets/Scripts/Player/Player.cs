@@ -13,6 +13,7 @@ namespace Player
         [SerializeField] private PlayerAnimator _playerAnimator;
 
         public float Health => _health;
+        public float MaxHealth => _maxHealth;
         
         public event UnityAction<float> HealthChanged;
         public event UnityAction PlayerDied;
