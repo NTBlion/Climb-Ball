@@ -15,7 +15,6 @@ namespace Player
 
         private void Start()
         {
-            _gemsCount = SaveData.Instance.Gems;
             GemsCountChanged?.Invoke(_gemsCount);
         }
 
@@ -40,7 +39,6 @@ namespace Player
             if (upgradePrice <= _gemsCount)
             {
                 _gemsCount -= upgradePrice;
-                SaveData.Instance.Gems = _gemsCount;
                 GemsCountChanged?.Invoke(_gemsCount);
                 isUpgraded = true;
 
@@ -55,7 +53,6 @@ namespace Player
         private void OnGemCollected()
         {
             _gemsCount++;
-            SaveData.Instance.Gems = _gemsCount;
             GemsCountChanged?.Invoke(_gemsCount);
         }
     }
