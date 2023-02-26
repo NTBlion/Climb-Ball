@@ -72,7 +72,6 @@ namespace Player
         private IEnumerator Die()
         {
             PlayerDied?.Invoke();
-            Debug.Log("сука");
             _playerAnimator.DoAnimation(PlayerAnimator.AnimationStates.die);
             yield return new WaitForSeconds(5f);
             Destroy(gameObject);
